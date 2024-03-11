@@ -44,7 +44,7 @@ export class EditProfileComponent {
   }
 
   fetchUserData(user_id: string) {
-    const url = `http://project-backend-2-2.vercel.app/facemash/navbar`;
+    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -68,7 +68,7 @@ export class EditProfileComponent {
     );
   }
   fetchPostData(user_id: string) {
-    const postUrl = `http://project-backend-2-2.vercel.app/facemash/profile`;
+    const postUrl = `https://project-backend-2-2.onrender.com/facemash/profile`;
   
     this.httpClient.post(postUrl, { user_id })
       .subscribe(
@@ -129,7 +129,7 @@ export class EditProfileComponent {
       formData.append('file', selectedFile);
   
       // Replace 'http://localhost:3000' with your actual server URL
-      const uploadUrl = `http://project-backend-2-2.vercel.app/upload/${user_id}/${post_id}`;
+      const uploadUrl = `https://project-backend-2-2.onrender.com/upload/${user_id}/${post_id}`;
   
       this.http.post(uploadUrl, formData).subscribe(
         (response: any) => {

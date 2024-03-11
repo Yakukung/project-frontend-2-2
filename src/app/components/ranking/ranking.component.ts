@@ -26,7 +26,7 @@ export class RankingComponent implements OnInit {
   }
 
   fetchRankingData() {
-    const url = "http://project-backend-2-2.vercel.app/facemash/ranking";
+    const url = "https://project-backend-2-2.onrender.com/facemash/ranking";
 
     this.httpClient.get(url)
       .subscribe(
