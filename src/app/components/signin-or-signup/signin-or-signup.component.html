@@ -1,0 +1,57 @@
+<!-- ../components/signin-or-signup/signin-or-signup.component.html -->
+<div class="container">
+    <div class="card">
+        <div class="row">
+            <div class="col-6">
+                <div class="card-signin">
+                    <h1>FaceMash</h1>
+                    <div class="card-body">
+                        <h2>Welcome back👏</h2>
+                        <h3>Login with your account!</h3>
+                        <div class="email">
+                            <h4>Email</h4>
+                            <input matInput placeholder="" type="email" #email name="email">
+                        </div>
+                        <div class="password">
+                            <h4>Password</h4>
+                            <input matInput placeholder=""type="password" #password name="password">
+                        </div>
+                        <button mat-flat-button (click)="getSignIn(email.value, password.value)">Sign In</button>
+                        <h5>Forgot your password? <span>Here</span></h5>
+                    </div>
+                 </div>
+            </div>
+            <div class="col-6">
+                <div class="card-signup">
+                    <div class="overlay">
+                        
+                        <h1>Sign Up</h1>
+                        <div class="text-status">
+                            <div class="text-success" *ngIf="successMessage">{{ successMessage }}</div>
+                            <div  class="text-error"*ngIf="errorMessage">{{ errorMessage }}</div>
+                        </div>
+                        <div class="firstname">
+                            <h4>Firstname</h4>
+                            <input matInput placeholder="" #firstNameInput type="text" name="firstName">
+                          </div>
+                          <div class="lastname">
+                            <h4>Lastname</h4>
+                            <input matInput placeholder="" #lastNameInput type="text" name="lastName">
+                          </div>
+                          <div class="email">
+                            <h4>Email</h4>
+                            <input matInput placeholder="" #emailInput type="email" name="email">
+                          </div>
+                          <div class="password">
+                            <h4>Password</h4>
+                            <input matInput placeholder="" #passwordInput type="password" name="password">
+                          </div>
+                          <div class="btn-signup">
+                            <button mat-flat-button (click)="getSignUp(firstNameInput, lastNameInput, emailInput, passwordInput)">Sign Up</button>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
