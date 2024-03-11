@@ -1,1 +1,41 @@
-<p>vote works!</p>
+<!-- vote.component.html -->
+
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="title">
+    <div class="title-vote">
+      <div class="vote">
+        <p>Vote</p>
+        <mat-chip-listbox aria-label="Fish selection">
+          <mat-chip-option selected>Default</mat-chip-option>
+          <mat-chip-option color="accent">A-Z</mat-chip-option>
+          <mat-chip-option color="warn">List View</mat-chip-option>
+        </mat-chip-listbox>
+      </div>
+      <hr>
+    </div>
+  </div>
+  <div class="card-vote">
+    <div class="col">
+      <div *ngIf="show[0]" class="card-vote1" (click)="vote(show[0].post_id)">
+        <div class="card-head">
+          <div class="icon" (click)="profile(show[0].user_id)">
+            <img [src]="show[0].icon" alt="Post Image" />
+          </div>
+          <span>{{show[0].first_name}} {{show[0].last_name}}</span>
+        </div>
+        <img [src]="show[0].picture" alt="Post Image" />
+      </div>
+      <h1>OR</h1>
+      <div *ngIf="show[1]" class="card-vote2" (click)="vote(show[1].post_id)">
+        <div class="card-head">
+          <div class="icon" (click)="profile(show[1].user_id)">
+            <img [src]="show[1].icon" alt="Post Image" />
+          </div>
+          <span>{{show[1].first_name}} {{show[1].last_name}}</span>
+        </div>
+        <img [src]="show[1].picture" alt="Post Image" />
+      </div>
+    </div>
+  </div>
+</div>

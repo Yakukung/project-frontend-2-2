@@ -1,0 +1,203 @@
+.container{
+    margin-top: 3rem;
+}
+.title-head{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    & .title-edit{
+        width: 90%;
+        & .edit{
+            & p{
+                font-size: 40px;
+            }
+
+        }
+    }
+    & hr{
+        width: 100%;
+        border: 1.5px solid #b5b5b5;
+        margin-top: 1.5rem;
+    }
+}
+.btn-back {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+    margin-right: 4rem;
+    & button{
+        border-radius: 11px;
+    }
+}
+.col-5{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    & .icon{
+        width: 400px;
+        height: 400px;
+        & img{
+            width: 100%;
+            height: 100%;
+            border-radius: 360px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: center top;
+        }
+        p {
+            width: 100%;
+            height: 100%;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777; /* Adjust the color as needed */
+            background-color: #F9F9FC;
+            border-radius: 30px;
+        }
+    }
+}
+.col-7{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card-head{
+    width: 500px;
+    & .card-name-about{
+        background-color: #F9F9FC;
+        border-radius: 30px;
+        padding: 1rem;
+        & .firstname{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        & .lastname{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        & .about{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        & button{
+            background-color: #1F426B;
+            border-radius: 11px;
+            color: white;
+            height: 28px;
+        }
+    }
+    & .container-post{
+        background-color: #F9F9FC;
+        border-radius: 30px;
+        padding: 1rem;
+        margin-top: 1rem;
+       & .list-post{
+        & .list-post-body{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            & .input-post{
+                width: 200px;
+            }
+        }
+    }
+
+    }
+    & span{
+        font-size: 16px;
+        font-weight: 500;
+        width: 50px;
+    }
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper.mat-mdc-form-field-bottom-align {
+    display: none !important;
+}
+mat-form-field{
+    margin: 1rem;
+}
+
+.btn-delete{
+    border-radius: 11px;
+}
+.btn-edit{
+    border-radius: 11px;
+}
+
+
+
+.card-input {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 10px;
+    width: 100%;
+}
+
+.file-input-container {
+    width: 100%;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
+.box__file {
+    display: none;
+}
+
+.box__dragndrop {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* จัดตัวข้อความตรงกลาง และปุ่มด้านล่างสุดต่อกัน */
+    border: 2px dashed #ccc;
+    padding: 20px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    &::before {
+        content: ""; /* สร้างส่วนพิเศษข้างหน้า */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* สีมืด (RGBA: 0, 0, 0) พร้อมค่าความโปร่งแสง (0.5) */
+    }
+
+    & p {
+        z-index: 100;
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+    }
+    & .btn{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        border: none;
+    }
+}
+button{
+    width: 75px;
+}
+h1{
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+}
+

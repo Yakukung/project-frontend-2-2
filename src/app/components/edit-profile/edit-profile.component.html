@@ -1,1 +1,107 @@
-<p>edit-profile works!</p>
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="title-head">
+        <div class="title-edit">
+            <div class="edit">
+                <p>Edit Profile</p>
+            </div>
+            <hr>
+        </div>
+    </div>
+    <div class="btn-back">
+        <button  class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backProfile(user_id)">Back</button>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <div class="icon">
+                <img *ngIf="icon" src="{{icon}}" alt="Profile Picture">
+                <p *ngIf="!icon">No picture</p>
+            </div>
+        </div>
+        <div class="col-7">
+            <div class="card-head">
+                <div class="card-name-about">
+                 <div class="firstname">
+                     <span>Firstname:</span>
+                         <mat-form-field appearance="outline">
+                           <mat-label>{{first_name}}</mat-label>
+                           <input matInput placeholder="" type="text" #firstname>
+                         </mat-form-field>
+                         <div class="btn-firstname">
+                             <button mat-flat-button >Edit</button>
+                         </div>
+                 </div>
+                 <div class="lastname">
+                     <span>Lastname:</span>
+                     <mat-form-field appearance="outline">
+                         <mat-label>{{last_name}}</mat-label>
+                         <input matInput placeholder="" type="text"  #firstname>
+                       </mat-form-field>
+                       <div class="btn-lastname">
+                        <button mat-flat-button >Edit</button>
+                    </div>
+                 </div>
+                 <div class="about">
+                    <span>About:</span>
+                     <mat-form-field>
+                    <textarea matInput [(ngModel)]="about"></textarea>
+                      </mat-form-field>
+                      <div class="btn-about">
+                        <button mat-flat-button >Edit</button>
+                    </div>
+                 </div>
+                </div>
+                <div class="container-post">
+                    <div class="list-post">
+                        <div class="row">
+                            <div class="list-post-body">
+                                <span>Icon:</span>
+                                <div class="input-post">
+                                    <input  type="file">
+                                </div>
+                                <button mat-flat-button class="btn-delete" style="background-color: #F51E3C; color: white;">Delete</button>
+                                <button mat-flat-button class="btn-edit"  style="background-color: #1F426B; color: white;">Edit</button>
+                            </div>
+                            <div class="list-post-body">
+                                <span>Banner:</span>
+                                <div class="input-post">
+                                    <input  type="file">
+                                </div>
+                                <button mat-flat-button class="btn-delete" style="background-color: #F51E3C; color: white;">Delete</button>
+                                <button mat-flat-button class="btn-edit"  style="background-color: #1F426B; color: white;">Edit</button>
+                            </div>
+                        </div>
+                        <h1>Post</h1>
+                        <div class="list-post-body">
+                            <div class="card-input">
+                                <div *ngFor="let post of posts; let i = index" class="file-input-container">
+                                    <div class="box">
+                                        <input name="files[]" id="file{{i}}" class="box__file" data-multiple-caption="{count} files selected" multiple="" type="file" (change)="handleFileChange($event, i, post.user_id, post.post_id)">
+                                        <label for="file{{i}}" class="box__dragndrop" [style.backgroundImage]="'url(' + post.picture + ')'">
+                                            <p>{{post.picture}}</p>
+                                            <div class="btn">
+                                                <button mat-flat-button class="btn-edit" style="background-color: #1F426B; color: white;" (click)="triggerFileInput(i)">Edit</button>
+                                                <button mat-flat-button class="btn-edit"  style="background-color: #F51E3C; color: white;">Delete</button>
+                                            </div>
+                                        </label>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="file-input-container">
+        <input name="files[]" id="file" class="box__file" data-multiple-caption="{count} files selected" multiple="" type="file">
+        <label for="file" class="box__dragndrop">
+            <strong>คลิกเพื่อเลือกไฟล์</strong>
+            <span>หรือลากมาที่นี่</span>
+        </label>
+    </div>
+</div> -->

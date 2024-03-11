@@ -1,1 +1,67 @@
-<p>profile works!</p>
+<app-navbar></app-navbar>
+        <div class="banner">
+            <img src="{{banner}}" alt="banner image">
+        </div>
+    <div class="container">
+        <div class="tab">
+            <div class="title-head">
+                <div class="icon-profile">
+                    <img src="{{icon}}" alt="icon">
+                </div>
+                <span>{{first_name}} {{last_name}}</span>
+            </div>
+            <div class="btn">
+                <button class="btn-statistics" style=" background-color: #1F426B; color: white;" mat-flat-button>Statistics</button>
+                <button  class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="editProfile(user_id)">Edit Profile</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <h1>About: </h1>
+                <p>{{about}}</p>
+            </div>
+            <div class="col-7">
+                <div class="container-card">
+                    <div class="card-import-post">
+                        <label for="image" class="custom-file-upload">
+                            <span>{{ fileName }}</span>
+                            <input #fileInput id="image" name="image" type="file" (change)="file($event)" required>
+                        </label>
+                        <button mat-flat-button color="primary" (click)="post()">Post</button>
+                    </div>
+                                     
+                    <div *ngFor="let post of posts" class="row">
+                        <div class="card-post">
+                            <div class="card-head">
+                                <div class="title">
+                                    <div class="icon">
+                                        <img src="{{ icon }}" alt="">
+                                    </div>
+                                    <span>{{first_name}} {{last_name}}</span>
+                                </div>
+                                <div class="time">
+                                    <span>{{post.time}}</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <img src="{{ post.picture }}" alt="">
+                            </div>
+                            <div class="card-lower">
+                                <button class="btn like-button" [class.active]="isLikedMap[post.post_id]" (click)="toggleLike(post.post_id)">
+                                    <mat-icon class="like-icon">favorite</mat-icon>
+                                </button>
+                                <button class="btn chart">
+                                    <mat-icon class="chat-icon">chat</mat-icon>
+                                </button>
+                                <button class="btn share">
+                                    <mat-icon class="share-icon">share</mat-icon> 
+                                </button>
+                                <p class="vote-count">{{ post.score }} Vote</p>
+         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
