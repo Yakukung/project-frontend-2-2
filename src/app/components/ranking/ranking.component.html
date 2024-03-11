@@ -1,1 +1,38 @@
-<p>ranking works!</p>
+<!-- app-ranking.component.html -->
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="title">
+        <div class="title-ranking">
+          <div class="ranking">
+            <p>Rangking</p>
+            <mat-chip-listbox aria-label="Fish selection">
+              <mat-chip-option selected>Default</mat-chip-option>
+              <mat-chip-option color="accent">A-Z</mat-chip-option>
+              <mat-chip-option color="warn">List View</mat-chip-option>
+            </mat-chip-listbox>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <div *ngFor="let item of rankingData; let i = index" class="row"> 
+        <div class="card-ranking">
+            <h1>{{ i + 1 }}</h1>
+            <div class="card-head">
+                <img src="{{ item.picture }}" alt="">
+                <div class="card-title">
+                    <div class="icon">
+                        <span>{{item.full_name}}</span>
+                        <div class="icon-img">
+                            <img [src]="item.icon" alt="Post Image" />
+                        </div>
+                    </div>
+                    <div class="title-score">
+                        <h2>{{ item.score }} Vote</h2>
+                    </div>
+                    <div class="btn-about">
+                        <button mat-flat-button >About</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

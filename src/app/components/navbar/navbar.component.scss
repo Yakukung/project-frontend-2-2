@@ -1,0 +1,37 @@
+mat-toolbar{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.483); 
+    backdrop-filter: blur(35px);
+    z-index: 1000;
+    & .nav-left{
+        color: #F51E3C;
+        font-size: 40px;
+        margin-left: 5rem;
+    }
+    .nav-right {
+        button {
+          margin-left: 2rem;
+          border-radius: 12.5px;
+          background-color: rgba(249, 249, 252, 0);
+          color: black; /* Default color for buttons */
+    
+        }
+        .active-icon {
+          background-color: #efeff2;
+          color: black;
+        }
+        .btn-login{
+            margin-right: 5rem;
+            background-color: #F51E3C;
+            color: white;
+            width: 100px;
+        }
+        
+    }
+}

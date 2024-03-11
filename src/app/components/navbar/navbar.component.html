@@ -1,1 +1,15 @@
-<p>navbar works!</p>
+<mat-toolbar>
+    <div class="nav-left">
+        <span>FaceMash</span>
+    </div>
+    <div class="nav-right">
+        <button mat-flat-button (click)="home()" [ngClass]="{'active-icon': isButtonActive('/homepage')}">Home</button>
+        <button mat-flat-button (click)="vote()" [ngClass]="{'active-icon': isButtonActive('/vote')}">Vote</button>
+        <button mat-flat-button (click)="ranking()" [ngClass]="{'active-icon': isButtonActive('/ranking')}">Ranking</button>
+        <button mat-flat-button (click)="profile()" [ngClass]="{'active-icon': isButtonActive('/profile') || isButtonActive('/edit-profile')}">My Profile</button>
+
+        <button mat-flat-button (click)="signup()" class="btn-login">{{ first_name ? first_name : 'Sign In' }}</button>
+
+        
+    </div>
+  </mat-toolbar>

@@ -1,0 +1,114 @@
+.container{
+    width: 100%;
+    margin-top: 4rem;
+    & p{
+        font-size: 30px;
+        text-align: left;
+        font-size: 45px;
+
+    }
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    & .title-ranking{
+        width: 90%;
+        & hr{
+            width: 100%;
+        }
+    }
+    & .ranking{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+   
+}
+
+hr{
+    border: 1.5px solid #b5b5b5;
+    margin-top: 0.5rem;
+}
+
+.card-ranking{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border-radius: 30px;
+    margin-top: 1.25rem;
+    & .card-head{
+        width: 490px;
+        background-color: #F9F9FC;
+        border-radius: 30px;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.5s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+
+        & h1{
+            padding-left: 3rem;
+        }
+        &:hover {
+          transform: scale(1.05); // Zoom in effect on hover
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); // Add shadow on hover
+        }
+
+    }
+    & img{
+        border-radius: 30px;
+        width: 200px;
+        height: 150px;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+    }
+
+    & .card-title{
+        width: 100%;
+        & .icon{
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 0.5rem;
+            margin-right: 1.5rem;
+            & span{
+                font-size: 18px;
+                font-weight: 500;
+                margin-right: 0.5rem;
+            }
+            & img{
+                border-radius: 30px;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    & .title-score{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 0.5rem;
+        & h2{
+            font-size: 30px;
+            color: #F51E3C;
+            font-weight: 500;
+        }
+    }
+}
+
+.btn-about{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 1.5rem;
+    & button{
+        border-radius: 11px;
+    }
+}
+
+h1{
+    margin-right: 1rem;
+}
