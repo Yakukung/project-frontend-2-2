@@ -26,7 +26,7 @@ export class RankingComponent implements OnInit {
   }
 
   fetchRankingData() {
-    const url = "http://localhost:3000/facemash/ranking";
+    const url = "https://project-backend-2-2.onrender.com/facemash/ranking";
 
     this.httpClient.get(url)
       .subscribe(
