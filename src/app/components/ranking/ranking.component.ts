@@ -39,7 +39,7 @@ export class RankingComponent implements OnInit {
   }
 
   async fetchDateOptions() {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-frontend-2-2.vercel.app';
     const url = `${HOST}/facemash/ranking/date-options`;
   
     try {
@@ -71,7 +71,7 @@ export class RankingComponent implements OnInit {
     console.log('Selected Date:', selectedDate);
     this.selectedDate = selectedDate;
 
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-frontend-2-2.vercel.app';
     const url = `${HOST}/facemash/ranking/data?selectedDate=${selectedDate}`;
 
     try {

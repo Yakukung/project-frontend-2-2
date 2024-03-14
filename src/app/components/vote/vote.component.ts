@@ -23,7 +23,7 @@ export class VoteComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   async ngOnInit() {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-frontend-2-2.vercel.app';
     const url = `${HOST}/facemash/vote`;
   
     try {
@@ -44,7 +44,7 @@ export class VoteComponent implements OnInit {
 
 
   async vote(winnerPostId: number, loserPostId: number) {
-    const URL = 'http://localhost:3000/facemash/vote';
+    const URL = 'https://project-frontend-2-2.vercel.app/facemash/vote';
 
     try {
         const response = await axios.post(URL, { winnerPostId, loserPostId });
@@ -96,7 +96,7 @@ updatePostScore(postArray: any[], updatedPost: { post_id: any; }, newRating: any
 
 
   async profile(userId: number) {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-frontend-2-2.vercel.app';
     const url = `${HOST}/facemash/profile`;
 
     // Load user profile data

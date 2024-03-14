@@ -34,7 +34,7 @@ export class HomepageComponent implements OnInit {
   }
 
   fetchUserData(user_id: string) {
-    const url = `http://localhost:3000/facemash/homepage`;
+    const url = `https://project-frontend-2-2.vercel.app/facemash/homepage`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -53,7 +53,7 @@ export class HomepageComponent implements OnInit {
   }
 
   vote(user_id: string) {
-    const url = `http://localhost:3000/facemash/homepage`;
+    const url = `https://project-frontend-2-2.vercel.app/facemash/homepage`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {

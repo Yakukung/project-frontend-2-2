@@ -34,7 +34,7 @@ export class SigninOrSignupComponent {
   constructor(private router: Router, private httpClient: HttpClient, private dialog: MatDialog) {}
 
   getSignUp(firstNameInput: HTMLInputElement, lastNameInput: HTMLInputElement, emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
-    const url = 'http://localhost:3000/facemash/signup/';
+    const url = 'https://project-frontend-2-2.vercel.app/facemash/signup/';
     const userData = {
       first_name: firstNameInput.value,
       last_name: lastNameInput.value,
@@ -81,7 +81,7 @@ export class SigninOrSignupComponent {
   
 
   async getSignIn(email: string, password: string) {
-    const HOST: string = "http://localhost:3000";
+    const HOST: string = "https://project-frontend-2-2.vercel.app";
     const url = `${HOST}/facemash/signin/`;
 
     const data = {
