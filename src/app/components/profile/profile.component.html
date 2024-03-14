@@ -1,6 +1,7 @@
 <app-navbar></app-navbar>
         <div class="banner">
-            <img src="{{banner}}" alt="banner image">
+            <img  *ngIf="banner" src="{{banner}}" alt="banner image">
+            <p *ngIf="!banner">No picture</p>
         </div>
     <div class="container">
         <div class="tab">

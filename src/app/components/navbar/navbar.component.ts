@@ -40,7 +40,7 @@ export class NavbarComponent {
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
+    const url = `http://localhost:3000/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -67,7 +67,7 @@ export class NavbarComponent {
     const isConfirmed = window.confirm('Are you sure you want to sign out?');
 
     if (isConfirmed) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/signin-or-signup']);
     } else {
     }
   }
@@ -85,6 +85,6 @@ export class NavbarComponent {
   }
   
   home() {
-    this.router.navigate(['/homepage'], { queryParams: { user_id: this.user_id } });
+    this.router.navigate(['/'], { queryParams: { user_id: this.user_id } });
   }
 }
