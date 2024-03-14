@@ -17,7 +17,7 @@
   </div>
   <div class="card-vote">
     <div class="col">
-      <div *ngIf="show[0]" class="card-vote1" (click)="vote(show[0].post_id)">
+      <div *ngIf="show[0]" class="card-vote1" (click)="vote(show[0].post_id, show[1].post_id)">
         <div class="card-head">
           <div class="icon" (click)="profile(show[0].user_id)">
             <img [src]="show[0].icon" alt="Post Image" />
@@ -27,7 +27,7 @@
         <img [src]="show[0].picture" alt="Post Image" />
       </div>
       <h1>OR</h1>
-      <div *ngIf="show[1]" class="card-vote2" (click)="vote(show[1].post_id)">
+      <div *ngIf="show[1]" class="card-vote2" (click)="vote(show[1].post_id, show[0].post_id)">
         <div class="card-head">
           <div class="icon" (click)="profile(show[1].user_id)">
             <img [src]="show[1].icon" alt="Post Image" />

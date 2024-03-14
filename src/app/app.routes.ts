@@ -8,8 +8,8 @@ import { ProfileComponent } from './components/profile/profile.component'
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 export const routes: Routes = [
-    { path: '', component: SigninOrSignupComponent},
-    { path: 'homepage', component: HomepageComponent },
+    { path: 'signin-or-signup', component: SigninOrSignupComponent},
+    { path: '', component: HomepageComponent },
     { path: 'vote', component: VoteComponent},
     { path: 'ranking', component: RankingComponent},
     { path: 'profile', component: ProfileComponent },

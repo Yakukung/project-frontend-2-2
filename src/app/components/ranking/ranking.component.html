@@ -1,38 +1,42 @@
-<!-- app-ranking.component.html -->
 <app-navbar></app-navbar>
 <div class="container">
-    <div class="title">
-        <div class="title-ranking">
-          <div class="ranking">
-            <p>Rangking</p>
-            <mat-chip-listbox aria-label="Fish selection">
-              <mat-chip-option selected>Default</mat-chip-option>
-              <mat-chip-option color="accent">A-Z</mat-chip-option>
-              <mat-chip-option color="warn">List View</mat-chip-option>
-            </mat-chip-listbox>
+  <div class="title">
+    <div class="title-ranking">
+      <div class="ranking">
+        <p>Rangking</p>
+        <mat-chip-listbox aria-label="Date Selection" #chipListbox>
+          <mat-chip-option  (click)="filterByDate(Latest)"  selected>Latest date</mat-chip-option>
+          <mat-chip-option (click)="filterByDate(yesterday)" [selected]="yesterday === yesterday" color="accent" selected>Yesterday</mat-chip-option>
+          <mat-chip-option (click)="filterByDate(two_days_ago)" [selected]="two_days_ago === two_days_ago" color="warn">2 days ago</mat-chip-option>
+          <mat-chip-option (click)="filterByDate(three_days_ago)" [selected]="three_days_ago === three_days_ago">3 days ago</mat-chip-option>
+          <mat-chip-option (click)="filterByDate(four_days_ago)" [selected]="selectedDate === four_days_ago" color="accent">4 days ago</mat-chip-option>
+          <mat-chip-option (click)="filterByDate(five_days_ago)" [selected]="selectedDate === five_days_ago" color="warn">5 days ago</mat-chip-option>
+          <mat-chip-option (click)="filterByDate(six_days_ago)" [selected]="selectedDate === six_days_ago">6 days ago</mat-chip-option>
+        </mat-chip-listbox>
+      </div> 
+      <hr>
+    </div>
+  </div>
+  <div *ngFor="let item of rankingData; let i = index" class="row">
+    <div class="card-ranking">
+      <h1>{{ i + 1 }}</h1>
+      <div class="card-head">
+        <img [src]="item.picture" alt="">
+        <div class="card-title">
+          <div class="icon">
+            <span>{{item.first_name}}</span>
+            <div class="icon-img">
+              <img [src]="item.icon" alt="Post Image" />
+            </div>
           </div>
-          <hr>
+          <div class="title-score">
+            <h2>{{ item.max_eloRating }} Vote</h2>
+          </div>
+          <div class="btn-about">
+            <button mat-flat-button>About</button>
+          </div>
         </div>
       </div>
-      <div *ngFor="let item of rankingData; let i = index" class="row"> 
-        <div class="card-ranking">
-            <h1>{{ i + 1 }}</h1>
-            <div class="card-head">
-                <img src="{{ item.picture }}" alt="">
-                <div class="card-title">
-                    <div class="icon">
-                        <span>{{item.full_name}}</span>
-                        <div class="icon-img">
-                            <img [src]="item.icon" alt="Post Image" />
-                        </div>
-                    </div>
-                    <div class="title-score">
-                        <h2>{{ item.score }} Vote</h2>
-                    </div>
-                    <div class="btn-about">
-                        <button mat-flat-button >About</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+  </div>
 </div>

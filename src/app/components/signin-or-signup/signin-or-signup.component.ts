@@ -12,6 +12,7 @@ import { UsersPostReq } from '../../../model/users.post.req';
 import axios from 'axios';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -33,7 +34,7 @@ export class SigninOrSignupComponent {
   constructor(private router: Router, private httpClient: HttpClient, private dialog: MatDialog) {}
 
   getSignUp(firstNameInput: HTMLInputElement, lastNameInput: HTMLInputElement, emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
-    const url = 'https://project-backend-2-2.onrender.com/facemash/signup/';
+    const url = 'http://localhost:3000/facemash/signup/';
     const userData = {
       first_name: firstNameInput.value,
       last_name: lastNameInput.value,
@@ -46,18 +47,31 @@ export class SigninOrSignupComponent {
     this.httpClient.post(url, userData).subscribe(
       (response: any) => {
         console.log('User successfully signed up:', response);
-        this.errorMessage = '';
-        this.successMessage = 'Registration successful!';
-        this.registeredSuccessfully = true; // Set the flag to true
-        setTimeout(() => {
-          this.router.navigate(['/']); // Navigate to the same route
-        }, 2000); // Delay for 2 seconds before refreshing
+
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Sign Up",
+          width: 400,
+          padding: "1em",
+          color: "#716add",
+          background: "#fff",
+          backdrop: `
+            rgba(0,0,123,0.4)
+            url("https://sweetalert2.github.io/images/nyan-cat.gif")
+            left top
+            no-repeat
+          `
+        });
       },
       (error: any) => {
         if (error.status === 409) {
-          this.successMessage = ''; // Reset success message
           console.error('Email already in use. Please choose a different email.');
-          this.errorMessage = 'Email already in use. Please choose a different email.';
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Email already in use. Please choose a different email.",
+          });
         } else {
           console.error('Error during signup:', error);
         }
@@ -67,7 +81,7 @@ export class SigninOrSignupComponent {
   
 
   async getSignIn(email: string, password: string) {
-    const HOST: string = "https://project-backend-2-2.onrender.com";
+    const HOST: string = "http://localhost:3000";
     const url = `${HOST}/facemash/signin/`;
 
     const data = {
