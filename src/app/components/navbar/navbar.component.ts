@@ -40,7 +40,7 @@ export class NavbarComponent {
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-frontend-2-2.vercel.app/facemash/navbar`;
+    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
