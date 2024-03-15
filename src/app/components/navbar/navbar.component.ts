@@ -30,6 +30,9 @@ export class NavbarComponent {
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient, private cdr: ChangeDetectorRef) {}
 
+
+
+  
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       const user_id = params['user_id'];

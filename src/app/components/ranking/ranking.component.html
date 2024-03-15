@@ -5,13 +5,14 @@
       <div class="ranking">
         <p>Rangking</p>
         <mat-chip-listbox aria-label="Date Selection" #chipListbox>
-          <mat-chip-option  (click)="filterByDate(Latest)"  selected>Latest date</mat-chip-option>
+          <mat-chip-option  (click)="filterByDate(today)"  selected>Today</mat-chip-option>
           <mat-chip-option (click)="filterByDate(yesterday)" [selected]="yesterday === yesterday" color="accent" selected>Yesterday</mat-chip-option>
           <mat-chip-option (click)="filterByDate(two_days_ago)" [selected]="two_days_ago === two_days_ago" color="warn">2 days ago</mat-chip-option>
           <mat-chip-option (click)="filterByDate(three_days_ago)" [selected]="three_days_ago === three_days_ago">3 days ago</mat-chip-option>
           <mat-chip-option (click)="filterByDate(four_days_ago)" [selected]="selectedDate === four_days_ago" color="accent">4 days ago</mat-chip-option>
           <mat-chip-option (click)="filterByDate(five_days_ago)" [selected]="selectedDate === five_days_ago" color="warn">5 days ago</mat-chip-option>
           <mat-chip-option (click)="filterByDate(six_days_ago)" [selected]="selectedDate === six_days_ago">6 days ago</mat-chip-option>
+          <mat-chip-option (click)="filterByDate(seven_days_ago)" [selected]="selectedDate === seven_days_ago">7 days ago</mat-chip-option>
         </mat-chip-listbox>
       </div> 
       <hr>
@@ -24,13 +25,13 @@
         <img [src]="item.picture" alt="">
         <div class="card-title">
           <div class="icon">
-            <span>{{item.full_name}}</span>
+            <span>{{item.first_name}} {{item.last_name}}</span>
             <div class="icon-img">
               <img [src]="item.icon" alt="Post Image" />
             </div>
           </div>
           <div class="title-score">
-            <h2>{{ item.max_eloRating }} Vote</h2>
+            <h2>{{ item.newRating }} Vote</h2>
           </div>
           <div class="btn-about">
             <button mat-flat-button>About</button>

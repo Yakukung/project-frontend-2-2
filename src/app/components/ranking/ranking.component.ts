@@ -23,13 +23,14 @@ export class RankingComponent implements OnInit {
   rankingData: any[] = [];
   selectedDate: string = '';
   dateOptions: string[] = [];
-  Latest: string = '';
+  today: string = '';
   yesterday: string = '';
   two_days_ago: string = '';
   three_days_ago: string = '';
   four_days_ago: string = '';
   five_days_ago: string = '';
   six_days_ago: string = '';
+  seven_days_ago: string = '';
   
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
@@ -47,17 +48,17 @@ export class RankingComponent implements OnInit {
   
       if (Array.isArray(response.data.dateOptions)) {
         this.dateOptions = response.data.dateOptions;
+        this.seven_days_ago = this.dateOptions[0];
+        this.six_days_ago = this.dateOptions[1];
+        this.five_days_ago = this.dateOptions[2];
+        this.four_days_ago = this.dateOptions[3];
+        this.three_days_ago = this.dateOptions[4];
+        this.two_days_ago = this.dateOptions[5];
+        this.yesterday = this.dateOptions[6];
+        this.today = this.dateOptions[7];
+ 
   
-        this.six_days_ago = this.dateOptions[0];
-        this.five_days_ago = this.dateOptions[1];
-        this.four_days_ago = this.dateOptions[2];
-        this.three_days_ago = this.dateOptions[3];
-        this.two_days_ago = this.dateOptions[4];
-        this.yesterday = this.dateOptions[5];
-        this.Latest = this.dateOptions[6]; // Set Latest to the default date
-  
-        // Call filterByDate with the default date
-        this.filterByDate(this.Latest);
+        this.filterByDate(this.today);
       } else {
         console.error('Invalid data format. Expected an array.');
       }

@@ -89,12 +89,6 @@ updatePostScore(postArray: any[], updatedPost: { post_id: any; }, newRating: any
 
 
 
-
-
-
-
-
-
   async profile(userId: number) {
     const HOST: string = 'https://project-backend-2-2.onrender.com';
     const url = `${HOST}/facemash/profile`;

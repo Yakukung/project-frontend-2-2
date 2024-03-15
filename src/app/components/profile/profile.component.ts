@@ -68,21 +68,29 @@ export class ProfileComponent {
       }
     );
   }
-  fetchPostData(user_id: string) {
-    const postUrl = `https://project-backend-2-2.onrender.com/facemash/profile`;
+fetchPostData(user_id: string) {
+    const Url = `https://project-backend-2-2.onrender.com/facemash/profile`;
   
-    this.httpClient.post(postUrl, { user_id })
+    this.httpClient.post(Url, { user_id })
       .subscribe(
         (response: any) => {
-          if (response.posts) {
-            this.posts = JSON.parse(response.posts);
+          try {
+            if (response.posts) {
+              this.posts = JSON.parse(response.posts);
+            }
+          } catch (error) {
+            console.error("Error parsing posts JSON:", error);
           }
+
+          console.log('Response:', response);
+          console.log('Posts before:', this.posts);
         },
         (error: any) => {
           console.error("Error fetching post data:", error);
         }
       );
-  }
+}
+
   iconSize: string = '100px';
   isLikedMap: { [post_id: string]: boolean } = {};
 
