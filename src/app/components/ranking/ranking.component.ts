@@ -40,7 +40,7 @@ export class RankingComponent implements OnInit {
   }
 
   async fetchDateOptions() {
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/date-options`;
   
     try {
@@ -72,7 +72,7 @@ export class RankingComponent implements OnInit {
     console.log('Selected Date:', selectedDate);
     this.selectedDate = selectedDate;
 
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/data?selectedDate=${selectedDate}`;
 
     try {
