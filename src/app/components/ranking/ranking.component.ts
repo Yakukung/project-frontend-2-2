@@ -21,6 +21,9 @@ import axios from 'axios';
 })
 export class RankingComponent implements OnInit {
   rankingData: any[] = [];
+
+  deltaRank: number = 0; // กำหนดค่าเริ่มต้นเป็น 0
+
   selectedDate: string = '';
   dateOptions: string[] = [];
   today: string = '';
@@ -40,7 +43,7 @@ export class RankingComponent implements OnInit {
   }
 
   async fetchDateOptions() {
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/date-options`;
   
     try {
@@ -72,23 +75,16 @@ export class RankingComponent implements OnInit {
     console.log('Selected Date:', selectedDate);
     this.selectedDate = selectedDate;
 
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/data?selectedDate=${selectedDate}`;
 
     try {
       const response = await axios.post(url);
       console.log('Response from server:', response);
 
-      // Assuming the server response is an array of ranking data
       this.rankingData = response.data;
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   }
-
-  
-
-  
-  
-  
 }

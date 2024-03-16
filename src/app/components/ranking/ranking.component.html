@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
-<div class="container">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+<div class="container" style="padding-bottom: 3rem;">
   <div class="title">
     <div class="title-ranking">
       <div class="ranking">
@@ -18,26 +19,160 @@
       <hr>
     </div>
   </div>
-  <div *ngFor="let item of rankingData; let i = index" class="row">
-    <div class="card-ranking">
-      <h1>{{ i + 1 }}</h1>
-      <div class="card-head">
-        <img [src]="item.picture" alt="">
-        <div class="card-title">
-          <div class="icon">
-            <span>{{item.first_name}} {{item.last_name}}</span>
-            <div class="icon-img">
-              <img [src]="item.icon" alt="Post Image" />
+  <div class="container-rank">
+    <div class="row">
+        <div class="col-7">
+          <div *ngFor="let item of rankingData.slice(0, 1); let i = index" class="row">
+            <div class="champ-card-ranking">
+              <div class="no-1">
+                <img src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F1.png?alt=media&token=45cd43d2-4187-480f-972d-41aa04bb2458" alt="" width="100%">
+              </div>
+              <div class="champ-card-head">
+                <img [src]="item.picture" alt="">
+                <div class="champ-card-title">
+                  <div class="champ-icon">
+                    <span>{{item.first_name}} {{item.last_name}}</span>
+                    <div class="champ-icon-img">
+                      <img [src]="item.icon" alt="Post Image" />
+                    </div>
+                  </div>
+                  <div class="champ-title-score">
+                    <h2>{{ item.newRating }} Vote</h2>
+                  </div>
+                  <div class="rank" *ngIf="item.oldRank !== 0">
+                    <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                      {{ item.oldRank }}
+                  </span>
+                    <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+                  </div>
+                  <div class="champ-btn-about">
+                    <div class="champ-sumRating">
+                      <span>{{ item.previousNewRating }}</span>
+                      <span *ngIf="item.deltaNewRating !== 0" [ngStyle]="{'color': item.deltaNewRating > 0 ? 'green' : 'red'}">
+                          {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
+                      </span>
+                    </div>
+                    <button mat-flat-button>About</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="title-score">
-            <h2>{{ item.newRating }} Vote</h2>
+
+          <div *ngFor="let item of rankingData.slice(1, 2); let i = index" class="row" style="margin-top: 2rem; margin-bottom: 2rem;">
+            <div class="champ-card-ranking">
+              <div class="champ-card-head">
+                <div class="champ-card-title">
+                  <div class="champ-icon">
+                    <span>{{item.first_name}} {{item.last_name}}</span>
+                    <div class="champ-icon-img">
+                      <img [src]="item.icon" alt="Post Image" />
+                    </div>
+                  </div>
+                  <div class="champ-title-score">
+                    <h2>{{ item.newRating }} Vote</h2>
+                  </div>
+                  <div class="rank" *ngIf="item.oldRank !== 0">
+                    <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                      {{ item.oldRank }}
+                  </span>
+                    <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+                  </div>
+                  <div class="champ-btn-about">
+                    <div class="champ-sumRating">
+                      <span>{{ item.previousNewRating }}</span>
+                      <span *ngIf="item.deltaNewRating !== 0" [ngStyle]="{'color': item.deltaNewRating > 0 ? 'green' : 'red'}">
+                          {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
+                      </span>
+                    </div>
+                    <button mat-flat-button>About</button>
+                  </div>
+                </div>
+                <img [src]="item.picture" alt="">
+              </div>
+              <div class="no-2">
+                <img src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F3.png?alt=media&token=09fe03ee-6cbc-4ef1-a945-086d9f1730f0" alt="" width="100%">
+              </div>
+            </div>
           </div>
-          <div class="btn-about">
-            <button mat-flat-button>About</button>
+
+          <div *ngFor="let item of rankingData.slice(2, 3); let i = index" class="row">
+            <div class="champ-card-ranking">
+              <div class="no-1">
+               <img src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F2.png?alt=media&token=cd0a4903-0057-47a1-9e35-b21395cd99c2" alt="" width="100%">
+              </div>
+              <div class="champ-card-head">
+                <img [src]="item.picture" alt="">
+                <div class="champ-card-title">
+                  <div class="champ-icon">
+                    <span>{{item.first_name}} {{item.last_name}}</span>
+                    <div class="champ-icon-img">
+                      <img [src]="item.icon" alt="Post Image" />
+                    </div>
+                  </div>
+                  <div class="champ-title-score">
+                    <h2>{{ item.newRating }} Vote</h2>
+                  </div>
+                  <div class="rank" *ngIf="item.oldRank !== 0">
+                    <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                      {{ item.oldRank }}
+                  </span>
+                    <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+                  </div>
+                  <div class="champ-btn-about">
+                    <div class="champ-sumRating">
+                      <span>{{ item.previousNewRating }}</span>
+                      <span *ngIf="item.deltaNewRating !== 0" [ngStyle]="{'color': item.deltaNewRating > 0 ? 'green' : 'red'}">
+                          {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
+                      </span>
+                    </div>
+                    <button mat-flat-button>About</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+
+        </div>
+
+        
+        <div class="col-5">
+          <div *ngFor="let item of rankingData.slice(3, 10); let i = index" class="row">
+            <div class="right-card-ranking">
+              <h1>{{ i + 1 + 2 }}</h1>
+              <div class="right-card-head">
+                <img [src]="item.picture" alt="">
+                <div class="right-card-title">
+                  <div class="right-icon">
+                    <span>{{item.first_name}} {{item.last_name}}</span>
+                    <div class="right-icon-img">
+                      <img [src]="item.icon" alt="Post Image" />
+                    </div>
+                  </div>
+                  <div class="right-title-score">
+                    <h2>{{ item.newRating }} Vote</h2>
+                  </div>
+                  <div class="right-btn-about">
+                    <div class="right-sumRating">
+                      <span>{{ item.previousNewRating }}</span>
+                      <span *ngIf="item.deltaNewRating !== 0" [ngStyle]="{'color': item.deltaNewRating > 0 ? 'green' : 'red'}">
+                          {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
+                      </span>
+                  </div>
+                  
+                    <button mat-flat-button>About</button>
+                  </div>
+                </div>
+              </div>
+              <div class="rank" *ngIf="item.oldRank !== 0">
+                <span>{{item.oldRank}}</span>
+                <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
+
+  

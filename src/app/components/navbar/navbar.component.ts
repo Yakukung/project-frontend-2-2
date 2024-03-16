@@ -43,7 +43,7 @@ export class NavbarComponent {
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
+    const url = `http://localhost:3000/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -61,7 +61,6 @@ export class NavbarComponent {
 
   isButtonActive(route: string): boolean {
     const isActive = this.router.url.includes(route);
-   
     return isActive;
   }
   
