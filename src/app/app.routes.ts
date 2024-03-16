@@ -7,6 +7,8 @@ import { RankingComponent } from './components/ranking/ranking.component';
 import { ProfileComponent } from './components/profile/profile.component'
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
+
+import { GraphComponent } from './components/graph/graph.component';
 export const routes: Routes = [
     { path: 'signin-or-signup', component: SigninOrSignupComponent},
     { path: '', component: HomepageComponent },
@@ -14,5 +16,7 @@ export const routes: Routes = [
     { path: 'ranking', component: RankingComponent},
     { path: 'profile', component: ProfileComponent },
     { path: 'navbar', component: NavbarComponent },
-    { path: 'edit-profile', component: EditProfileComponent }
+    { path: 'edit-profile', component: EditProfileComponent },
+    { path: 'graph', component: GraphComponent }
+
 ];
