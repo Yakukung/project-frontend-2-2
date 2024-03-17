@@ -11,18 +11,19 @@ import { MatChipListbox } from '@angular/material/chips';
 import { map } from 'rxjs/operators';
 
 import axios from 'axios';
+import { GraphComponent } from "../graph/graph.component";
 
 @Component({
-  selector: 'app-ranking',
-  standalone: true,
-  imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule,MatChipListbox],
-  templateUrl: './ranking.component.html',
-  styleUrls: ['./ranking.component.scss']
+    selector: 'app-ranking',
+    standalone: true,
+    templateUrl: './ranking.component.html',
+    styleUrls: ['./ranking.component.scss'],
+    imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox, GraphComponent]
 })
 export class RankingComponent implements OnInit {
   rankingData: any[] = [];
 
-  deltaRank: number = 0; // กำหนดค่าเริ่มต้นเป็น 0
+  deltaRank: number = 0;
 
   selectedDate: string = '';
   dateOptions: string[] = [];
@@ -43,7 +44,7 @@ export class RankingComponent implements OnInit {
   }
 
   async fetchDateOptions() {
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/date-options`;
   
     try {
@@ -75,7 +76,7 @@ export class RankingComponent implements OnInit {
     console.log('Selected Date:', selectedDate);
     this.selectedDate = selectedDate;
 
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/data?selectedDate=${selectedDate}`;
 
     try {

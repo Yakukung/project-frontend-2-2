@@ -131,11 +131,7 @@
               </div>
             </div>
           </div>
-      
-
         </div>
-
-        
         <div class="col-5">
           <div *ngFor="let item of rankingData.slice(3, 10); let i = index" class="row">
             <div class="right-card-ranking">
@@ -171,6 +167,13 @@
             </div>
           </div>
         </div>
+    </div>
+
+    <div class="container-stat" style="width: 100%; margin-top: 2rem;">
+      <hr>
+      <div class="stat" style="width: 100%; display: flex; justify-content: center; border: 1px solid red;">
+        <app-graph></app-graph>
+      </div>
     </div>
 </div>
 

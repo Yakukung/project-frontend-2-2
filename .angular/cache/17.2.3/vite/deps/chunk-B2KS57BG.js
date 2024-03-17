@@ -18,6 +18,13 @@ var __spreadValues = (a, b) => {
   return a;
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+  get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+}) : x)(function(x) {
+  if (typeof require !== "undefined")
+    return require.apply(this, arguments);
+  throw Error('Dynamic require of "' + x + '" is not supported');
+});
 var __objRest = (source, exclude) => {
   var target = {};
   for (var prop in source)
@@ -30,7 +37,7 @@ var __objRest = (source, exclude) => {
     }
   return target;
 };
-var __commonJS = (cb, mod) => function __require() {
+var __commonJS = (cb, mod) => function __require2() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
 var __export = (target, all) => {
@@ -61,9 +68,10 @@ var __async = (__this, __arguments, generator) => {
 export {
   __spreadValues,
   __spreadProps,
+  __require,
   __objRest,
   __commonJS,
   __export,
   __async
 };
-//# sourceMappingURL=chunk-SFFCLR5V.js.map
+//# sourceMappingURL=chunk-B2KS57BG.js.map

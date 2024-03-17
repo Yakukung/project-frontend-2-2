@@ -44,7 +44,7 @@ export class ProfileComponent {
 
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
+    const url = `http://localhost:3000/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -69,7 +69,7 @@ export class ProfileComponent {
     );
   }
 fetchPostData(user_id: string) {
-    const Url = `https://project-backend-2-2.onrender.com/facemash/profile`;
+    const Url = `http://localhost:3000/facemash/profile`;
   
     this.httpClient.post(Url, { user_id })
       .subscribe(
