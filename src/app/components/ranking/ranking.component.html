@@ -7,12 +7,6 @@
         <mat-chip-listbox aria-label="Date Selection" #chipListbox>
           <mat-chip-option  (click)="filterByDate(today)"  selected>Today</mat-chip-option>
           <mat-chip-option (click)="filterByDate(yesterday)" [selected]="yesterday === yesterday" color="accent" selected>Yesterday</mat-chip-option>
-          <mat-chip-option (click)="filterByDate(two_days_ago)" [selected]="two_days_ago === two_days_ago" color="warn">2 days ago</mat-chip-option>
-          <mat-chip-option (click)="filterByDate(three_days_ago)" [selected]="three_days_ago === three_days_ago">3 days ago</mat-chip-option>
-          <mat-chip-option (click)="filterByDate(four_days_ago)" [selected]="selectedDate === four_days_ago" color="accent">4 days ago</mat-chip-option>
-          <mat-chip-option (click)="filterByDate(five_days_ago)" [selected]="selectedDate === five_days_ago" color="warn">5 days ago</mat-chip-option>
-          <mat-chip-option (click)="filterByDate(six_days_ago)" [selected]="selectedDate === six_days_ago">6 days ago</mat-chip-option>
-          <mat-chip-option (click)="filterByDate(seven_days_ago)" [selected]="selectedDate === seven_days_ago">7 days ago</mat-chip-option>
         </mat-chip-listbox>
       </div> 
       <hr>
@@ -38,20 +32,20 @@
                   <div class="champ-title-score">
                     <h2>{{ item.newRating }} Vote</h2>
                   </div>
-                  <div class="rank" *ngIf="item.oldRank !== 0">
-                    <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
-                      {{ item.oldRank }}
-                  </span>
-                    <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
-                  </div>
                   <div class="champ-btn-about">
+                    <div class="rank" *ngIf="item.oldRank !== 0">
+                      <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                        {{ item.oldRank }}
+                    </span>
+                      <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+                    </div>
                     <div class="champ-sumRating">
                       <span>{{ item.previousNewRating }}</span>
                       <span *ngIf="item.deltaNewRating !== 0" [ngStyle]="{'color': item.deltaNewRating > 0 ? 'green' : 'red'}">
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                     </div>
-                    <button mat-flat-button>About</button>
+                    <button (click)="about(item.post_id)" mat-flat-button>About</button>
                   </div>
                 </div>
               </div>
@@ -71,20 +65,20 @@
                   <div class="champ-title-score">
                     <h2>{{ item.newRating }} Vote</h2>
                   </div>
-                  <div class="rank" *ngIf="item.oldRank !== 0">
-                    <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
-                      {{ item.oldRank }}
-                  </span>
-                    <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
-                  </div>
                   <div class="champ-btn-about">
+                    <div class="rank" *ngIf="item.oldRank !== 0">
+                      <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                        {{ item.oldRank }}
+                    </span>
+                      <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+                    </div>
                     <div class="champ-sumRating">
                       <span>{{ item.previousNewRating }}</span>
                       <span *ngIf="item.deltaNewRating !== 0" [ngStyle]="{'color': item.deltaNewRating > 0 ? 'green' : 'red'}">
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                     </div>
-                    <button mat-flat-button>About</button>
+                    <button (click)="about(item.post_id)" mat-flat-button>About</button>
                   </div>
                 </div>
                 <img [src]="item.picture" alt="">
@@ -112,20 +106,20 @@
                   <div class="champ-title-score">
                     <h2>{{ item.newRating }} Vote</h2>
                   </div>
-                  <div class="rank" *ngIf="item.oldRank !== 0">
-                    <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
-                      {{ item.oldRank }}
-                  </span>
-                    <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
-                  </div>
                   <div class="champ-btn-about">
+                    <div class="rank" *ngIf="item.oldRank !== 0">
+                      <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                        {{ item.oldRank }}
+                    </span>
+                      <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+                    </div>
                     <div class="champ-sumRating">
                       <span>{{ item.previousNewRating }}</span>
                       <span *ngIf="item.deltaNewRating !== 0" [ngStyle]="{'color': item.deltaNewRating > 0 ? 'green' : 'red'}">
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                     </div>
-                    <button mat-flat-button>About</button>
+                    <button (click)="about(item.post_id)" mat-flat-button>About</button>
                   </div>
                 </div>
               </div>
@@ -155,14 +149,15 @@
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                   </div>
-                  
-                    <button mat-flat-button>About</button>
+                  <button (click)="about(item.post_id)" mat-flat-button>About</button>
                   </div>
                 </div>
               </div>
-              <div class="rank" *ngIf="item.oldRank !== 0">
-                <span>{{item.oldRank}}</span>
-                <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+              <div class="container-rank" style="width: 20px;">
+                <div class="rank" *ngIf="item.oldRank !== 0">
+                  <span>{{item.oldRank}}</span>
+                  <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
+                </div>
               </div>
             </div>
           </div>

@@ -44,7 +44,7 @@ export class RankingComponent implements OnInit {
   }
 
   async fetchDateOptions() {
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/date-options`;
   
     try {
@@ -52,14 +52,8 @@ export class RankingComponent implements OnInit {
   
       if (Array.isArray(response.data.dateOptions)) {
         this.dateOptions = response.data.dateOptions;
-        this.seven_days_ago = this.dateOptions[0];
-        this.six_days_ago = this.dateOptions[1];
-        this.five_days_ago = this.dateOptions[2];
-        this.four_days_ago = this.dateOptions[3];
-        this.three_days_ago = this.dateOptions[4];
-        this.two_days_ago = this.dateOptions[5];
-        this.yesterday = this.dateOptions[6];
-        this.today = this.dateOptions[7];
+        this.yesterday = this.dateOptions[0];
+        this.today = this.dateOptions[1];
  
   
         this.filterByDate(this.today);
@@ -76,7 +70,7 @@ export class RankingComponent implements OnInit {
     console.log('Selected Date:', selectedDate);
     this.selectedDate = selectedDate;
 
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/data?selectedDate=${selectedDate}`;
 
     try {
@@ -88,4 +82,8 @@ export class RankingComponent implements OnInit {
       console.error('Error fetching data:', error);
     }
   }
+
+  about(post_id: number) {
+    console.log("Post_id:",post_id);
+    }
 }
