@@ -5,9 +5,11 @@
       <div class="ranking">
         <p>Rangking</p>
         <mat-chip-listbox aria-label="Date Selection" #chipListbox>
-          <mat-chip-option  (click)="filterByDate(today)"  selected>Today</mat-chip-option>
-          <mat-chip-option (click)="filterByDate(yesterday)" [selected]="yesterday === yesterday" color="accent" selected>Yesterday</mat-chip-option>
+          <mat-chip-option *ngFor="let dateOption of dateOptions; let isFirst = first" (click)="filterByDate(dateOption)" [selected]="dateOption === selectedDate" [color]="dateOption === yesterday ? 'accent' : null">
+              {{ isFirst ? 'Today' : dateOption === yesterday ? 'Yesterday' : dateOption }}
+          </mat-chip-option>
         </mat-chip-listbox>
+        
       </div> 
       <hr>
     </div>

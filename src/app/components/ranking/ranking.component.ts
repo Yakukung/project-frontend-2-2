@@ -29,12 +29,6 @@ export class RankingComponent implements OnInit {
   dateOptions: string[] = [];
   today: string = '';
   yesterday: string = '';
-  two_days_ago: string = '';
-  three_days_ago: string = '';
-  four_days_ago: string = '';
-  five_days_ago: string = '';
-  six_days_ago: string = '';
-  seven_days_ago: string = '';
   
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
@@ -52,11 +46,10 @@ export class RankingComponent implements OnInit {
   
       if (Array.isArray(response.data.dateOptions)) {
         this.dateOptions = response.data.dateOptions;
-        this.yesterday = this.dateOptions[0];
-        this.today = this.dateOptions[1];
- 
+        this.selectedDate = this.dateOptions[0];
+        this.yesterday = this.dateOptions[1];
+        this.filterByDate(this.selectedDate);
   
-        this.filterByDate(this.today);
       } else {
         console.error('Invalid data format. Expected an array.');
       }
