@@ -22,7 +22,7 @@ export class VoteComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   async ngOnInit() {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-backend-2-2.onrender.com';
     const url = `${HOST}/facemash/vote`;
 
     try {
@@ -41,7 +41,7 @@ export class VoteComponent implements OnInit {
   }
 
   async vote(winnerPostId: number, loserPostId: number) {
-    const URL = 'http://localhost:3000/facemash/vote';
+    const URL = 'https://project-backend-2-2.onrender.com/facemash/vote';
     let timerInterval: string | number | NodeJS.Timeout | undefined;
 
     Swal.fire({
@@ -134,7 +134,7 @@ export class VoteComponent implements OnInit {
   }
 
   async profile(userId: number) {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-backend-2-2.onrender.com';
     const url = `${HOST}/facemash/profile`;
 
     // Load user profile data
