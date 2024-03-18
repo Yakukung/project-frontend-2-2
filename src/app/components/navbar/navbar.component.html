@@ -8,7 +8,7 @@
         <button mat-flat-button (click)="ranking()" [ngClass]="{'active-icon': isButtonActive('/ranking')}">Ranking</button>
         <button mat-flat-button (click)="profile()" [ngClass]="{'active-icon': isButtonActive('/profile') || isButtonActive('/edit-profile')}">My Profile</button>
 
-        <button mat-flat-button (click)="signup()" class="btn-login">{{ first_name ? first_name : 'Sign In' }}</button>
+        <button mat-flat-button (click)="signup(user_id)" class="btn-login">{{ first_name ? first_name : 'Sign In' }}</button>
 
         
     </div>

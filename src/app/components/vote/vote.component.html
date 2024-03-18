@@ -6,36 +6,57 @@
     <div class="title-vote">
       <div class="vote">
         <p>Vote</p>
-        <mat-chip-listbox aria-label="Fish selection">
-          <mat-chip-option selected>Default</mat-chip-option>
-          <mat-chip-option color="accent">A-Z</mat-chip-option>
-          <mat-chip-option color="warn">List View</mat-chip-option>
-        </mat-chip-listbox>
       </div>
       <hr>
     </div>
   </div>
   <div class="card-vote">
     <div class="col">
-      <div *ngIf="show[0]" class="card-vote1" (click)="vote(show[0].post_id, show[1].post_id)">
+      <div *ngIf="show[0]" class="card-vote1"
+        (click)="vote(show[0].post_id, show[1].post_id)">
         <div class="card-head">
-          <div class="icon" (click)="profile(show[0].user_id)">
-            <img [src]="show[0].icon" alt="Post Image" />
+          <div *ngIf="show[0]?.user_id">
+            <div class="icon" *ngIf="!checkSignin"
+              (click)="profile(show[0]?.user_id)">
+              <img
+                src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
+                alt="Post Image" />
+            </div>
+            <div class="icon" *ngIf="checkSignin"
+              (click)="profile(show[0]?.user_id)">
+              <img [src]="show[0].icon" alt="Post Image" />
+            </div>
           </div>
-          <span>{{show[0].first_name}} {{show[0].last_name}}</span>
+          <span *ngIf="!checkSignin">Unknown Person</span>
+          <span *ngIf="checkSignin">{{show[0].first_name}}
+            {{show[0].last_name}}</span>
         </div>
         <img [src]="show[0].picture" alt="Post Image" />
       </div>
       <h1>OR</h1>
-      <div *ngIf="show[1]" class="card-vote2" (click)="vote(show[1].post_id, show[0].post_id)">
+      <div *ngIf="show[1]" class="card-vote2"
+        (click)="vote(show[1].post_id, show[0].post_id)">
         <div class="card-head">
-          <div class="icon" (click)="profile(show[1].user_id)">
+          <div class="icon" *ngIf="!checkSignin"
+            (click)="profile(show[1]?.user_id)">
+            <img
+              src="https://images.rawpixel.com/image_png_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjkzNy1hZXctMTY1LnBuZw.png"
+              alt="Post Image" />
+          </div>
+          <div class="icon" *ngIf="checkSignin"
+            (click)="profile(show[1]?.user_id)">
             <img [src]="show[1].icon" alt="Post Image" />
           </div>
-          <span>{{show[1].first_name}} {{show[1].last_name}}</span>
+          <span *ngIf="!checkSignin">Unknown Person</span>
+          <span *ngIf="checkSignin">{{show[1].first_name}}
+            {{show[1].last_name}}</span>
         </div>
         <img [src]="show[1].picture" alt="Post Image" />
       </div>
     </div>
+  </div>
+  <div *ngIf="!checkSignin" class="title-end">
+    <p class="material-symbols-outlined">warning</p>
+    <p>Sign in to view the post owner's profile.</p>
   </div>
 </div>

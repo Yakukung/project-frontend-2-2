@@ -45,7 +45,7 @@ export class GraphComponent implements OnInit, OnDestroy {
   }
 
   fetchGraphData(): void {
-    this.chartSubscription = this.httpClient.get<any[]>('https://project-backend-2-2.onrender.com/facemash/graph')
+    this.chartSubscription = this.httpClient.get<any[]>('http://localhost:3000/facemash/graph')
       .subscribe(
         (data: any[]) => {
           this.chartData = data;
