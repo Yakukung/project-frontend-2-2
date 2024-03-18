@@ -54,7 +54,7 @@ export class VoteComponent implements OnInit {
     });
 
     try {
-      const HOST: string = 'http://localhost:3000';
+      const HOST: string = 'https://project-backend-2-2.onrender.com';
       const url = `${HOST}/facemash/vote`;
 
       const response = await axios.get(url);
