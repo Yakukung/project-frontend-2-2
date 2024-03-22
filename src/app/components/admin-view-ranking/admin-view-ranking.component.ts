@@ -41,7 +41,7 @@ export class AdminViewRankingComponent implements OnInit {
   }
 
   async fetchDateOptions() {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-backend-2-2.onrender.com';
     const url = `${HOST}/facemash/ranking/date-options`;
   
     try {
@@ -91,7 +91,7 @@ export class AdminViewRankingComponent implements OnInit {
         },
       });
   
-      const HOST: string = 'http://localhost:3000';
+      const HOST: string = 'https://project-backend-2-2.onrender.com';
       const url = `${HOST}/facemash/ranking/data?selectedDate=${selectedDate}`;
   
       const response = await axios.post(url);
