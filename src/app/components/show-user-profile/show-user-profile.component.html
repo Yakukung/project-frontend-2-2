@@ -1,0 +1,50 @@
+<app-navbar></app-navbar>
+<div class="banner">
+    <img *ngIf="banner" src="{{ banner }}" alt="banner image">
+    <p *ngIf="!banner">No picture</p>
+</div>
+<div *ngIf="user_id; else emptyState" class="container">
+    <div class="tab">
+        <div class="title-head">
+            <div class="icon-profile">
+                <img src="{{ icon }}" alt="icon">
+            </div>
+            <span>{{ first_name }} {{ last_name }}</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <h1>About: </h1>
+            <p>{{ about }}</p>
+        </div>
+        <div class="col-7">
+            <div class="container-card">
+                <div *ngFor="let post of posts" class="row">
+                    <div class="card-post">
+                        <div class="card-head">
+                            <div class="title">
+                                <div class="icon">
+                                    <img src="{{ icon }}" alt="">
+                                </div>
+                                <span>{{ first_name }} {{ last_name }}</span>
+                            </div>
+                            <div class="time">
+                                <span>{{ post.time }}</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <img src="{{ post.picture }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #emptyState>
+    <div class="container">
+        <div class="empty-state">
+            <p>No user data available. Please log in.</p>
+        </div>
+    </div>
+</ng-template>

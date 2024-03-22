@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="card-user" *ngFor="let item of response">
+    <div class="card-head">
+      <img *ngIf="item.icon" [src]="item.icon" alt="">
+      <h1 *ngIf="!item.icon">No picture</h1>
+    </div>
+    <div class="card-body">
+      <span>{{ item.first_name }} {{ item.last_name }}</span>
+      <button (click)="viewProfile(admin_id, user_type, item.user_id)" mat-flat-button>About</button>
+    </div>
+  </div>
+</div>

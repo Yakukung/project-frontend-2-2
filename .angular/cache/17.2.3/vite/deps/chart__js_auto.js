@@ -46,8 +46,8 @@ import {
   registerables,
   registry,
   scales
-} from "./chunk-AATOKGFP.js";
-import "./chunk-B2KS57BG.js";
+} from "./chunk-F6HHN7Q6.js";
+import "./chunk-SFFCLR5V.js";
 
 // node_modules/chart.js/auto/auto.js
 Chart.register(...registerables);

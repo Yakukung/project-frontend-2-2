@@ -12,7 +12,7 @@
             <span>{{ first_name }} {{ last_name }}</span>
         </div>
         <div class="btn">
-            <button class="btn-statistics" style="background-color: #1F426B; color: white;" mat-flat-button>Statistics</button>
+            <button class="btn-statistics" style="background-color: #1F426B; color: white;" mat-flat-button (click)="viewStat(user_id)">Statistics</button>
             <button class="btn-edit" style="background-color: #F51E3C; color: white;" mat-flat-button (click)="editProfile(user_id)">Edit Profile</button>
         </div>
     </div>

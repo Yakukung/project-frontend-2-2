@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="btn-back">
+    <button  *ngIf="user_type !== 'admin'"  class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backRanking(user_id, user_type)">Back</button>
+    <button  *ngIf="user_type === 'admin'" class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backAdminRanking(user_id, user_type)">Back</button>
+</div>
+  <div class="row">
+    <div class="col-3">
+      <div class="card-post">
+        <img src="{{picture}}" alt="">
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="text">
+        <h1>{{first_name}} {{last_name}}</h1>
+        <p> - post {{post_id}}</p>
+      </div>
+      <hr>
+      <div class="graph">
+        <!-- <div class="graph" *ngFor="let post of chartData "> -->
+        <canvas id="myChart" width="1200" height="600"></canvas>
+      </div>
+    </div>
+  </div>
+</div>

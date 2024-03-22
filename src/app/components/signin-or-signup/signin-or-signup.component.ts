@@ -27,14 +27,12 @@ export class SigninOrSignupComponent {
   lastName: any;
   email: string = '';
   password: string = '';
-  successMessage: string = '';
-  errorMessage: string = '';
-  registeredSuccessfully: boolean = false;
+  user_type: string = '';
 
   constructor(private router: Router, private httpClient: HttpClient, private dialog: MatDialog) {}
 
   getSignUp(firstNameInput: HTMLInputElement, lastNameInput: HTMLInputElement, emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
-    const url = 'https://project-backend-2-2.onrender.com/facemash/signup/';
+    const url = 'http://localhost:3000/facemash/signup/';
     const userData = {
       first_name: firstNameInput.value,
       last_name: lastNameInput.value,
@@ -81,7 +79,7 @@ export class SigninOrSignupComponent {
   
 
   async getSignIn(email: string, password: string) {
-    const HOST: string = "https://project-backend-2-2.onrender.com";
+    const HOST: string = "http://localhost:3000";
     const url = `${HOST}/facemash/signin/`;
 
     const data = {
@@ -103,9 +101,9 @@ export class SigninOrSignupComponent {
 
         if (user_id) {
           if (user_type === 'user') {
-            this.router.navigate(['/'], { queryParams: { user_id: user_id } });
+            this.router.navigate(['/'], { queryParams: { user_id: user_id, user_type: user_type } });
           } else if (user_type === 'admin') {
-            this.router.navigate(['/admin-homepage'], { queryParams: { user_id: user_id } });
+            this.router.navigate(['/admin-homepage'], { queryParams: { admin_id: user_id, user_type: user_type } });
           } else {
             console.log("Invalid user type");
           }

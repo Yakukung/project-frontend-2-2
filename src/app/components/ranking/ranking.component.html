@@ -47,7 +47,7 @@
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                     </div>
-                    <button (click)="about(item.post_id)" mat-flat-button>About</button>
+                    <button (click)="about(item.post_id, user_id, user_type)" mat-flat-button>About</button>
                   </div>
                 </div>
               </div>
@@ -80,7 +80,7 @@
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                     </div>
-                    <button (click)="about(item.post_id)" mat-flat-button>About</button>
+                    <button (click)="about(item.post_id, user_id, user_type)" mat-flat-button>About</button>
                   </div>
                 </div>
                 <img [src]="item.picture" alt="">
@@ -121,7 +121,7 @@
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                     </div>
-                    <button (click)="about(item.post_id)" mat-flat-button>About</button>
+                    <button (click)="about(item.post_id, user_id, user_type)" mat-flat-button>About</button>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@
                           {{ item.deltaNewRating > 0 ? '+' : '' }}{{ item.deltaNewRating }}
                       </span>
                   </div>
-                  <button (click)="about(item.post_id)" mat-flat-button>About</button>
+                  <button (click)="about(item.post_id, user_id, user_type)" mat-flat-button>About</button>
                   </div>
                 </div>
               </div>

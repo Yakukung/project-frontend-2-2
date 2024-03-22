@@ -22,6 +22,7 @@ export class HomepageComponent implements OnInit {
   first_name: string = '';
   last_name: string = '';
   user_id: string = '';
+  user_type: string = '';
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
 
   ngOnInit() {
@@ -56,7 +57,7 @@ export class HomepageComponent implements OnInit {
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/homepage`;
+    const url = `http://localhost:3000/facemash/homepage`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -66,6 +67,7 @@ export class HomepageComponent implements OnInit {
         this.first_name = response.first_name;
         this.last_name = response.last_name;
         this.user_id = response.user_id;
+        this.user_type = response.user_type;
 
       },
       (error: any) => {
@@ -75,7 +77,7 @@ export class HomepageComponent implements OnInit {
   }
 
   vote(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/homepage`;
+    const url = `http://localhost:3000/facemash/homepage`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {

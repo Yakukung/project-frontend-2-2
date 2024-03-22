@@ -10,34 +10,39 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatChipListbox } from '@angular/material/chips';
 import Swal from 'sweetalert2';
 import axios from 'axios';
-import { GraphComponent } from "../graph/graph.component";
 
 @Component({
     selector: 'app-ranking',
     standalone: true,
     templateUrl: './ranking.component.html',
     styleUrls: ['./ranking.component.scss'],
-    imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox, GraphComponent]
+    imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox,]
 })
 export class RankingComponent implements OnInit {
   rankingData: any[] = [];
-
   deltaRank: number = 0;
-
   selectedDate: string = '';
   dateOptions: string[] = [];
   today: string = '';
   yesterday: string = '';
+  post_id: any;
+  user_id: any;
+  user_type: any;
   
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.user_id = params['user_id'];
+      this.user_type = params['user_type'];
+      console.log('user_id: ', this.user_id);
+    });
     this.fetchDateOptions();
   }
 
   async fetchDateOptions() {
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/ranking/date-options`;
   
     try {
@@ -87,7 +92,7 @@ export class RankingComponent implements OnInit {
         },
       });
   
-      const HOST: string = 'https://project-backend-2-2.onrender.com';
+      const HOST: string = 'http://localhost:3000';
       const url = `${HOST}/facemash/ranking/data?selectedDate=${selectedDate}`;
   
       const response = await axios.post(url);
@@ -101,10 +106,11 @@ export class RankingComponent implements OnInit {
     }
   }
   
-  
-
-
-  about(post_id: number) {
-    console.log("Post_id:",post_id);
+    about(post_id: number, user_id: number, user_type: number) {
+      console.log("Post_id:", post_id);
+      console.log("User_id:", user_id);
+      this.router.navigate(['/statistics'], { queryParams: { post_id: post_id, user_id: user_id, user_type: user_type} });
     }
+    
+  
 }

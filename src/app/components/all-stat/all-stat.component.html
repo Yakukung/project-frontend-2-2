@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="btn-back">
+        <button  class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backProfile(user_id)">Back</button>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let postId of postIds">
+        <div class="col-3">
+          <div class="card-post">
+            <img [src]="getPostImage(postId)" alt="">
+          </div>
+        </div>
+        <div class="col-9">
+          <div class="text">
+            <h1>{{ getPostFirstName(postId) }} {{ getPostLastName(postId) }}</h1>
+            <p> - post {{ postId }}</p>
+          </div>
+          <hr>
+          <div class="graph">
+            <canvas id="chart_{{ postId }}" width="400" height="200"></canvas>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+  

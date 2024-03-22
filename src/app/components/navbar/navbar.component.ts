@@ -25,18 +25,19 @@ export class NavbarComponent {
   first_name: string = '';
   last_name: string = '';
   user_id: string = '';
+  admin_id: string = '';
   activeButton: string = '';
+  user_type: string = '';
 
   currentRoute: string = '';
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient, private cdr: ChangeDetectorRef) {}
 
-
-
-  
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       const user_id = params['user_id'];
+      this.admin_id = params['admin_id'];
+      this.user_type = params['user_type'];
       if (user_id) {
         this.fetchUserData(user_id);
       }
@@ -44,7 +45,7 @@ export class NavbarComponent {
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
+    const url = `http://localhost:3000/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -66,13 +67,6 @@ export class NavbarComponent {
   }
   
   signup(user_id: string) {
-
-    // const isConfirmed = window.confirm('Are you sure you want to sign out?');
-
-    // if (isConfirmed) {
-    //   this.router.navigate(['/signin-or-signup']);
-    // } else {
-    // }
       if (user_id) {
         Swal.fire({
           title: "Are you sure you want to sign out?",
@@ -108,18 +102,28 @@ export class NavbarComponent {
   }
 
   profile() {
-    this.router.navigate(['/profile'], { queryParams: { user_id: this.user_id } });
+    this.router.navigate(['/profile'], { queryParams: { user_id: this.user_id, user_type: this.user_type } });
   }
 
   ranking() {
-    this.router.navigate(['/ranking'], { queryParams: { user_id: this.user_id } });
+    this.router.navigate(['/ranking'], { queryParams: { user_id: this.user_id, user_type: this.user_type } });
   }
   
   vote() {
-    this.router.navigate(['/vote'], { queryParams: { user_id: this.user_id } });
+    this.router.navigate(['/vote'], { queryParams: { user_id: this.user_id, user_type: this.user_type } });
   }
   
   home() {
-    this.router.navigate(['/'], { queryParams: { user_id: this.user_id } });
+    this.router.navigate(['/'], { queryParams: { user_id: this.user_id, user_type: this.user_type } });
+  }
+
+  adminHome() {
+    this.router.navigate(['/admin-homepage'], { queryParams: { admin_id: this.admin_id, user_type: this.user_type } });
+  }
+  adminViewUser() {
+    this.router.navigate(['/admin-view-user'], { queryParams: { admin_id: this.admin_id, user_type: this.user_type } });
+  }
+  adminViewRanking() {
+    this.router.navigate(['/admin-view-ranking'], { queryParams: { admin_id: this.admin_id, user_type: this.user_type } });
   }
 }
