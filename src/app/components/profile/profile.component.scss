@@ -23,11 +23,11 @@
             align-items: center;
             color: #777; /* Adjust the color as needed */
             background-color: #F9F9FC;
-            border-radius: 30px;
         }
  }
  
  .icon-profile {
+    position: relative;
     width: 200px;
     height: 200px;
     background-color: white;
@@ -39,12 +39,16 @@
     aspect-ratio: 1 / 1;
   
     img {
-      width: 100%;
-      height: 100%;
+      width: 200px;
+      height:  200px;
       object-fit: cover;
       transform: scale(1.01);
       border-radius:  360px;
       aspect-ratio: 1 / 1;
+    }
+    & .hoverable{
+        width: 200px;
+        height: 200px;
     }
   }
 
@@ -189,7 +193,10 @@
     background-color: #F9F9FC;
     padding: 2rem;
     border-radius: 30px;
-
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    :hover{
+        transform: scale(1.03);
+    }
     & button{
         border-radius: 11px;
     }
@@ -206,6 +213,7 @@
     overflow: hidden;
     width: 320px;
     border-radius: 11px;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
 }
 
 .custom-file-upload input[type="file"] {
@@ -215,4 +223,38 @@
     top: 0;
     opacity: 0;
     cursor: pointer;
+}
+
+
+.banner p {
+    position: relative;
+}
+
+.banner input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+}
+
+.banner p:hover {
+    background-color: #dbdbdd; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+}
+.hoverable:hover {
+    background-color: #dbdbdd; /* เปลี่ยนสีพื้นหลังเมื่อ hover */
+}
+.banner p {
+    transition: background-color 0.5s ease; /* เพิ่ม transition เพื่อทำให้สีทึบเร็วช้าเมื่อเมาส์เข้าไป */
+}
+.icon-profile input[type="file"] {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    top: 0;
+    left: 0;
 }

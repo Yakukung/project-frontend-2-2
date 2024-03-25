@@ -31,6 +31,7 @@ export class AllStatComponent implements OnInit, OnDestroy {
   chartData: any[] = [];
   private chartSubscription: Subscription;
   postIds: number[] = [];
+  user_type: any;
 
   constructor(
     private router: Router,
@@ -62,6 +63,7 @@ export class AllStatComponent implements OnInit, OnDestroy {
   ngAfterViewInit(): void {
     this.route.queryParams.subscribe((params) => {
       const user_id = params['user_id'];
+      this.user_type = params['user_type'];
       console.log('user_id: ', user_id);
   
       this.fetchGraphAllPost(user_id);
@@ -69,7 +71,7 @@ export class AllStatComponent implements OnInit, OnDestroy {
   }
   
   fetchGraphAllPost(user_id: string): void {
-    const url = `https://project-backend-2-2.onrender.com/facemash/stat/show-user-post-all`;
+    const url = `http://localhost:3000/facemash/stat/show-user-post-all`;
   
     this.chartSubscription = this.httpClient
       .post<any[]>(url, { user_id })
@@ -144,6 +146,6 @@ export class AllStatComponent implements OnInit, OnDestroy {
 
 
   backProfile(user_id: string) {
-    this.router.navigate(['/profile'], { queryParams: { user_id: this.user_id } });
+    this.router.navigate(['/profile'], { queryParams: { user_id: this.user_id, user_type: this.user_type} });
     }
 }

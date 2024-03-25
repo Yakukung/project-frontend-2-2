@@ -68,7 +68,7 @@ export class AdminViewUserComponent implements OnInit {
         },
       });
 
-      const HOST: string = 'https://project-backend-2-2.onrender.com';
+      const HOST: string = 'http://localhost:3000';
       const url = `${HOST}/facemash/admin/`;
 
       const response = await this.httpClient.get<UserData[]>(url).toPromise() ?? [];

@@ -28,47 +28,55 @@
                            <input matInput placeholder="" type="text" #firstname>
                          </mat-form-field>
                          <div class="btn-firstname">
-                             <button mat-flat-button >Edit</button>
+                             <button mat-flat-button  (click)="updateFirstname(firstname.value, user_id)">Edit</button>
                          </div>
                  </div>
                  <div class="lastname">
                      <span>Lastname:</span>
                      <mat-form-field appearance="outline">
                          <mat-label>{{last_name}}</mat-label>
-                         <input matInput placeholder="" type="text"  #firstname>
+                         <input matInput placeholder="" type="text"  #lastname>
                        </mat-form-field>
                        <div class="btn-lastname">
-                        <button mat-flat-button >Edit</button>
+                        <button mat-flat-button (click)="updateLastname(lastname.value, user_id)">Edit</button>
                     </div>
                  </div>
                  <div class="about">
                     <span>About:</span>
-                     <mat-form-field>
-                    <textarea matInput [(ngModel)]="about"></textarea>
-                      </mat-form-field>
-                      <div class="btn-about">
-                        <button mat-flat-button >Edit</button>
+                    <mat-form-field>
+                        <textarea matInput [(ngModel)]="about" #aboutTextarea></textarea>
+                    </mat-form-field>
+                    <div class="btn-about">
+                        <button mat-flat-button (click)="updateAbout(aboutTextarea.value, user_id)">Edit</button>
                     </div>
-                 </div>
+                </div>
                 </div>
                 <div class="container-post">
                     <div class="list-post">
                         <div class="row">
                             <div class="list-post-body">
-                                <span>Icon:</span>
                                 <div class="input-post">
-                                    <input  type="file">
+                                    <input #fileInput type="file" (change)="UploadIcon($event, first_name, user_id)">
+                                    <div class="file-input-overlay">
+                                        <img src="{{icon}}" alt="">
+                                        <p *ngIf="!icon">Insert Icon Here!</p>
+                                    </div>
+                                    <div class="input-post-body">
+                                        <span>Icon</span>
+                                        <button mat-flat-button class="btn-delete" style="background-color: #F51E3C; color: white;" (click)="deleteIcon(icon, user_id)">Delete</button>
+                                    </div>
                                 </div>
-                                <button mat-flat-button class="btn-delete" style="background-color: #F51E3C; color: white;">Delete</button>
-                                <button mat-flat-button class="btn-edit"  style="background-color: #1F426B; color: white;">Edit</button>
-                            </div>
-                            <div class="list-post-body">
-                                <span>Banner:</span>
                                 <div class="input-post">
-                                    <input  type="file">
+                                    <input #fileInput type="file" (change)="UploadBanner($event, first_name, user_id)">
+                                    <div class="file-input-overlay">
+                                        <img *ngIf="banner" src="{{banner}}" alt="">
+                                        <p *ngIf="!banner">Insert Banner Here!</p>
+                                    </div>
+                                    <div class="input-post-body">
+                                        <span>Banner</span>
+                                        <button mat-flat-button class="btn-delete" style="background-color: #F51E3C; color: white;" (click)="deleteBanner(banner, user_id)">Delete</button>
+                                    </div>
                                 </div>
-                                <button mat-flat-button class="btn-delete" style="background-color: #F51E3C; color: white;">Delete</button>
-                                <button mat-flat-button class="btn-edit"  style="background-color: #1F426B; color: white;">Edit</button>
                             </div>
                         </div>
                         <h1>Post</h1>
@@ -76,17 +84,25 @@
                             <div class="card-input">
                                 <div *ngFor="let post of posts; let i = index" class="file-input-container">
                                     <div class="box">
-                                        <input name="files[]" id="file{{i}}" class="box__file" data-multiple-caption="{count} files selected" multiple="" type="file" (change)="handleFileChange($event, i, post.user_id, post.post_id)">
+                                        <input name="files[]" id="file{{i}}" class="box__file" data-multiple-caption="{count} files selected" multiple="" type="file" (change)="UploadPost($event, i, user_id, post.post_id, first_name)">
                                         <label for="file{{i}}" class="box__dragndrop" [style.backgroundImage]="'url(' + post.picture + ')'">
                                             <p>{{post.picture}}</p>
+                                            <p *ngIf="post.post_id" style="text-align: center; font-size: 25px;">Post {{i+1}}</p>
+                                            <p *ngIf="!post.post_id" style="font-size: 25px; display: flex; align-items: center; justify-content: center;">Insert Post</p>
                                             <div class="btn">
-                                                <button mat-flat-button class="btn-edit" style="background-color: #1F426B; color: white;" (click)="triggerFileInput(i)">Edit</button>
-                                                <button mat-flat-button class="btn-edit"  style="background-color: #F51E3C; color: white;">Delete</button>
+                                                <button *ngIf="post.post_id" mat-flat-button class="btn-edit"  style="background-color: #F51E3C; color: white;" (click)="deletePost(post.post_id, user_id)">Delete</button>
                                             </div>
                                         </label>
-                                        
                                     </div>
                                 </div>
+                                
+                                <div class="add-box-container" style="max-width: 100%; max-height: 100%;">
+                                    <button mat-flat-button style="width: 100%;height: 100%; background-color: #28C740; border-radius: 0;" (click)="addNewPost()">
+                                        <span class="material-symbols-outlined" style="color:  white; font-size: 65px; text-align: center; margin-left: -1rem;">
+                                        add_circle
+                                        </span></button>
+                                </div>
+                                
                             </div>
                         </div>
 

@@ -23,6 +23,7 @@ export class AdminHomepageComponent implements OnInit{
   last_name: string = '';
   user_id: string = '';
   user_type: string = '';
+  
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
 
   ngOnInit() {
@@ -57,7 +58,7 @@ export class AdminHomepageComponent implements OnInit{
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/homepage`;
+    const url = `http://localhost:3000/facemash/homepage`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -77,7 +78,7 @@ export class AdminHomepageComponent implements OnInit{
   }
 
   vote(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/homepage`;
+    const url = `http://localhost:3000/facemash/homepage`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {

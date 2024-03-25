@@ -15,6 +15,8 @@ import Swal from 'sweetalert2';
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
+
+isHovered: any;
 Statistics: any;
 
   email: string = '';
@@ -28,6 +30,8 @@ Statistics: any;
   posts: any[] = [];
   fileName: string = 'Upload New Post!';
   fileInput: any;
+  user_type: any;
+  post_id: any;
 
   
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
@@ -56,7 +60,7 @@ Statistics: any;
 
     this.route.queryParams.subscribe((params) => {
       const user_id = params['user_id'];
-  
+      this.user_type = params['user_type'];
       if (user_id) {
         this.fetchUserData(user_id);
         this.fetchPostData(user_id);
@@ -82,7 +86,7 @@ Statistics: any;
   }
   
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
+    const url = `http://localhost:3000/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -107,7 +111,7 @@ Statistics: any;
     );
   }
 fetchPostData(user_id: string) {
-    const Url = `https://project-backend-2-2.onrender.com/facemash/profile`;
+    const Url = `http://localhost:3000/facemash/profile`;
   
     this.httpClient.post(Url, { user_id })
       .subscribe(
@@ -115,6 +119,9 @@ fetchPostData(user_id: string) {
           try {
             if (response.posts) {
               this.posts = JSON.parse(response.posts);
+
+              this.post_id = response.posts.post_id;
+              console.log("Post Id:",response.posts.post_id);
             }
           } catch (error) {
             console.error("Error parsing posts JSON:", error);
@@ -137,13 +144,105 @@ fetchPostData(user_id: string) {
   }
 
 
+  UploadBanner(event: any, first_name: string, user_id: string) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput && fileInput.files && fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('first_name', first_name);
+        formData.append('user_id', user_id);
+        
+        const postUrl = `http://localhost:3000/facemash/upload/banner`;
+        this.httpClient.post(postUrl, formData).subscribe(
+            (response: any) => {
+                console.log('Upload successful: ', response);
+                Swal.fire({
+                  title: `Upload Banner success`,
+                  icon: 'success',
+                }).then(() => {
+                  // จากนั้นทำการรีโหลดหน้าเว็บ
+                  window.location.reload();
+                });
+            },
+            (error: any) => {
+                console.error('Error uploading file: ', error);
+            }
+        );
+    } else {
+        console.error('No file selected');
+    }
+  }
+
+  UploadIcon(event: any, first_name: string, user_id: string) {
+    const fileInput = event.target as HTMLInputElement;
+    if (fileInput && fileInput.files && fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('first_name', first_name);
+        formData.append('user_id', user_id);
+        
+        const postUrl = `http://localhost:3000/facemash/upload/icon`;
+        this.httpClient.post(postUrl, formData).subscribe(
+            (response: any) => {
+                console.log('Upload successful: ', response);
+                Swal.fire({
+                  title: `Upload Icon success`,
+                  icon: 'success',
+                }).then(() => {
+                  // จากนั้นทำการรีโหลดหน้าเว็บ
+                  window.location.reload();
+                });
+            },
+            (error: any) => {
+                console.error('Error uploading file: ', error);
+            }
+        );
+    } else {
+        console.error('No file selected');
+    }
+}
+
+UploadPost(event: any, user_id: string, first_name: string) {
+  const fileInput = event.target as HTMLInputElement;
+  if (fileInput && fileInput.files && fileInput.files.length > 0) {
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('user_id', user_id);
+      formData.append('first_name', first_name);
+      
+      const postUrl = `http://localhost:3000/facemash/upload/post`;
+      this.httpClient.post(postUrl, formData).subscribe(
+          (response: any) => {
+              console.log('Upload successful: ', response);
+              Swal.fire({
+                title: `Upload Banner success`,
+                icon: 'success',
+              }).then(() => {
+                // จากนั้นทำการรีโหลดหน้าเว็บ
+                window.location.reload();
+              });
+          },
+          (error: any) => {
+              console.error('Error uploading file: ', error);
+          }
+      );
+  } else {
+      console.error('No file selected');
+  }
+}
+
+  
+
 
 editProfile(user_id: string) {
-  this.router.navigate(['/edit-profile'], { queryParams: { user_id: this.user_id } });
+  this.router.navigate(['/edit-profile'], { queryParams: { user_id: this.user_id ,user_type: this.user_type} });
 }
 
 viewStat(user_id: string) {
-  this.router.navigate(['/all-stat'], { queryParams: { user_id: this.user_id } });
+  this.router.navigate(['/all-stat'], { queryParams: { user_id: this.user_id ,user_type: this.user_type } });
   console.log(this.user_id);
   
 }

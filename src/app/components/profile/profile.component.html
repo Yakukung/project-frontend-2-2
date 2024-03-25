@@ -1,37 +1,49 @@
 <app-navbar></app-navbar>
 <div class="banner">
     <img *ngIf="banner" src="{{ banner }}" alt="banner image">
-    <p *ngIf="!banner">No picture</p>
+   
+    <p *ngIf="!banner" class="hoverable">
+        <span *ngIf="isHovered">Upload Banner</span>
+        <span *ngIf="!isHovered">No picture</span>
+        <input #fileInput type="file" (change)="UploadBanner($event, first_name, user_id)" (mouseenter)="isHovered = true" (mouseleave)="isHovered = false">
+    </p>
+    
+    
+
 </div>
 <div *ngIf="user_id; else emptyState" class="container">
     <div class="tab">
         <div class="title-head">
             <div class="icon-profile">
                 <img src="{{ icon }}" alt="icon">
+                <img  *ngIf="!icon" src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F434211518_782056206784597_9220203625929879844_n.jpg?alt=media&token=c2a3d632-cf4f-43c3-a785-75cce2b4f1d7" alt="icon">
+                <input #fileInput type="file" (change)="UploadIcon($event, first_name, user_id)" accept="image/*">
             </div>
+            
             <span>{{ first_name }} {{ last_name }}</span>
         </div>
         <div class="btn">
-            <button class="btn-statistics" style="background-color: #1F426B; color: white;" mat-flat-button (click)="viewStat(user_id)">Statistics</button>
+            <button  *ngIf="posts " class="btn-statistics" style="background-color: #1F426B; color: white;" mat-flat-button (click)="viewStat(user_id)">Statistics</button>
             <button class="btn-edit" style="background-color: #F51E3C; color: white;" mat-flat-button (click)="editProfile(user_id)">Edit Profile</button>
         </div>
     </div>
     <div class="row">
-        <div class="col-5">
+        <div  class="col-5">
             <h1>About: </h1>
             <p>{{ about }}</p>
+            <p *ngIf="!about" style="text-align: center;">No! about, Please add  about your to the edit page.</p>
         </div>
         <div class="col-7">
             <div class="container-card">
                 <div class="card-import-post">
                     <label for="image" class="custom-file-upload">
                         <span>{{ fileName }}</span>
-                        <input #fileInput id="image" name="image" type="file" (change)="file($event)" required>
+                        <input id="file{{user_id}}" name="files{{first_name}}" type="file" accept="image/*" (change)="UploadPost($event, user_id, first_name)">
                     </label>
                     <button mat-flat-button color="primary" (click)="post()">Post</button>
                 </div>
                 <div *ngFor="let post of posts" class="row">
-                    <div class="card-post">
+                    <div class="card-post" *ngIf="post.post_id > 0">
                         <div class="card-head">
                             <div class="title">
                                 <div class="icon">
