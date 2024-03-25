@@ -112,6 +112,11 @@ export class SigninOrSignupComponent {
         }
       } else {
         console.log("Invalid email or password");
+        Swal.fire({
+          icon: "error",
+          title: "Your email and password are incorrect.",
+          text: "Please try again.",
+        });
       }
 
       return user_signin_success;

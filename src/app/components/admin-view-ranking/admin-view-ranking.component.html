@@ -36,7 +36,7 @@
                   </div>
                   <div class="champ-btn-about">
                     <div class="rank" *ngIf="item.oldRank !== 0">
-                      <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                      <span class="text-deltaRank" *ngIf="item.deltaRank !== 0 && item.rankChange !== 'ไม่เปลี่ยนแปลง' && item.status !== 'ไม่เปลี่ยนแปลง'" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
                         {{ item.oldRank }}
                     </span>
                       <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
@@ -69,7 +69,7 @@
                   </div>
                   <div class="champ-btn-about">
                     <div class="rank" *ngIf="item.oldRank !== 0">
-                      <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                      <span class="text-deltaRank" *ngIf="item.deltaRank !== 0 && item.rankChange !== 'ไม่เปลี่ยนแปลง' && item.status !== 'ไม่เปลี่ยนแปลง'" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
                         {{ item.oldRank }}
                     </span>
                       <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
@@ -110,7 +110,7 @@
                   </div>
                   <div class="champ-btn-about">
                     <div class="rank" *ngIf="item.oldRank !== 0">
-                      <span class="text-deltaRank" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                      <span class="text-deltaRank" *ngIf="item.deltaRank !== 0 && item.rankChange !== 'ไม่เปลี่ยนแปลง' && item.status !== 'ไม่เปลี่ยนแปลง'" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
                         {{ item.oldRank }}
                     </span>
                       <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
@@ -157,7 +157,9 @@
               </div>
               <div class="container-rank" style="width: 20px;">
                 <div class="rank" *ngIf="item.oldRank !== 0">
-                  <span>{{item.oldRank}}</span>
+                  <span class="text-deltaRank" *ngIf="item.deltaRank !== 0 && item.rankChange !== 'ไม่เปลี่ยนแปลง' && item.status !== 'ไม่เปลี่ยนแปลง'" [ngStyle]="{ color: item.deltaRank > 0 ? 'green' : item.deltaRank < 0 ? 'red' : 'black' }">
+                    {{ item.oldRank }}
+                </span>
                   <span class="material-symbols-outlined" *ngIf="item.deltaRank !== 0" [ngClass]="{'green-arrow': item.deltaRank > 0, 'red-arrow': item.deltaRank < 0}">{{ item.deltaRank > 0 ? 'expand_circle_up' : 'expand_circle_down' }}</span>
                 </div>
               </div>

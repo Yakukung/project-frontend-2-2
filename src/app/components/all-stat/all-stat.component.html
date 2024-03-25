@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
-<div class="container">
-    <div class="btn-back">
-        <button  class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backProfile(user_id)">Back</button>
-    </div>
+<div class="btn-back">
+  <button  class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backProfile(user_id)">Back</button>
+</div>
+<div class="container"  *ngIf="!chartData || chartData.length >= 1; else emptyState" >
     <div class="row">
       <ng-container *ngFor="let postId of postIds">
         <div class="col-3">
@@ -23,4 +23,13 @@
       </ng-container>
     </div>
   </div>
+
+  <ng-template #emptyState>
+    <div class="container">
+        <div class="empty-state" style="text-align: center; padding: 12rem;">
+            <p style="font-size: 45px; font-weight: 500;">No graph data</p>
+            <p style="font-size: 20px; margin-top: 2rem; font-weight: 300;">Please post a picture on your profile page and join the voting at the vote page.</p>
+        </div>
+    </div>
+</ng-template>
   

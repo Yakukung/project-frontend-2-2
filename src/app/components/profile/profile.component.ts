@@ -28,7 +28,7 @@ Statistics: any;
   icon: string = '';
   about: string = '';
   posts: any[] = [];
-  fileName: string = 'Upload New Post!';
+  fileName: string = 'Upload new post Here!';
   fileInput: any;
   user_type: any;
   post_id: any;
