@@ -31,6 +31,10 @@
             width: 100%;
             border-radius: 11px;
             margin-top: 1.5rem;
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            &:hover{
+              transform: scale(1.1);
+            }
         }
         & h5{
             margin-top: 1rem;
@@ -56,6 +60,10 @@
             height:45px; 
             border-radius: 11px; 
             padding: 1rem;
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            &:hover{
+              transform: scale(1.1);
+            }
         }
     }
 
@@ -79,6 +87,10 @@
             height:45px; 
             border-radius: 11px; 
             padding: 1rem;
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            &:hover{
+              transform: scale(1.1);
+            }
         }
         & h1{
             color: #F9F9FC;
@@ -101,6 +113,10 @@
                 color: white;
                 border-radius: 11px;
                 margin-top: 1.5rem;
+                transition: transform 0.5s ease, box-shadow 0.3s ease;
+                &:hover{
+                  transform: scale(1.1);
+                }
             }
         }
     }
