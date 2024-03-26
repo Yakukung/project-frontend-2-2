@@ -77,22 +77,4 @@ export class AdminHomepageComponent implements OnInit{
     );
   }
 
-  vote(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/homepage`;
-
-    this.httpClient.post(url, { user_id }).subscribe(
-      (response: any) => {
-        this.email = response.email;
-        this.password = response.password;
-        this.first_name = response.first_name;
-        this.last_name = response.last_name;
-        this.user_id = response.user_id;
-
-      },
-      (error: any) => {
-        console.error("Error fetching user data:", error);
-      }
-    );
-    this.router.navigate(['/vote'], { queryParams: { user_id: this.user_id } });
-  }
 }

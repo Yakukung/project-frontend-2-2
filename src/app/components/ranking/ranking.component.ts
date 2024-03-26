@@ -19,6 +19,7 @@ import axios from 'axios';
     imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox,]
 })
 export class RankingComponent implements OnInit {
+
   rankingData: any[] = [];
   deltaRank: number = 0;
   selectedDate: string = '';
@@ -111,6 +112,11 @@ export class RankingComponent implements OnInit {
       console.log("User_id:", user_id);
       this.router.navigate(['/statistics'], { queryParams: { post_id: post_id, user_id: user_id, user_type: user_type} });
     }
+
+    viewProfile(user_id: any, user_type: any, view_user_id: any) {
+      this.router.navigate(['/show-user-profile'], { queryParams: { user_id: user_id, user_type: user_type, view_user_id: view_user_id} });
+    }
+    
     
   
 }

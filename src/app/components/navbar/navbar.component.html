@@ -1,6 +1,7 @@
 <mat-toolbar>
     <div class="nav-left">
         <span>FaceMash</span>
+        <span class="text-admin" *ngIf="user_type === 'admin'">For Admin</span>
     </div>
     <div class="nav-right">
         <button mat-flat-button *ngIf="user_type !== 'admin'" (click)="home()">Home</button>

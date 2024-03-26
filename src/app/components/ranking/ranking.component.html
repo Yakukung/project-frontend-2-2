@@ -26,10 +26,11 @@
                 <img [src]="item.picture" alt="">
                 <div class="champ-card-title">
                   <div class="champ-icon">
-                    <span>{{item.first_name}} {{item.last_name}}</span>
+                    <span (click)="viewProfile(user_id, user_type, item.user_id)">{{ item.first_name }} {{ item.last_name }}</span>
                     <div class="champ-icon-img">
-                      <img [src]="item.icon" alt="Post Image" />
+                      <img (click)="viewProfile(user_id, user_type, item.user_id)" [src]="item.icon" alt="Post Image" />
                     </div>
+                    
                   </div>
                   <div class="champ-title-score">
                     <h2>{{ item.newRating }} Vote</h2>
@@ -59,9 +60,9 @@
               <div class="champ-card-head">
                 <div class="champ-card-title">
                   <div class="champ-icon">
-                    <span>{{item.first_name}} {{item.last_name}}</span>
+                    <span (click)="viewProfile(user_id, user_type, item.user_id)">{{ item.first_name }} {{ item.last_name }}</span>
                     <div class="champ-icon-img">
-                      <img [src]="item.icon" alt="Post Image" />
+                      <img (click)="viewProfile(user_id, user_type, item.user_id)" [src]="item.icon" alt="Post Image" />
                     </div>
                   </div>
                   <div class="champ-title-score">
@@ -100,9 +101,9 @@
                 <img [src]="item.picture" alt="">
                 <div class="champ-card-title">
                   <div class="champ-icon">
-                    <span>{{item.first_name}} {{item.last_name}}</span>
+                    <span (click)="viewProfile(user_id, user_type, item.user_id)">{{ item.first_name }} {{ item.last_name }}</span>
                     <div class="champ-icon-img">
-                      <img [src]="item.icon" alt="Post Image" />
+                      <img (click)="viewProfile(user_id, user_type, item.user_id)" [src]="item.icon" alt="Post Image" />
                     </div>
                   </div>
                   <div class="champ-title-score">
@@ -136,9 +137,9 @@
                 <img [src]="item.picture" alt="">
                 <div class="right-card-title">
                   <div class="right-icon">
-                    <span>{{item.first_name}} {{item.last_name}}</span>
-                    <div class="right-icon-img">
-                      <img [src]="item.icon" alt="Post Image" />
+                    <span (click)="viewProfile(user_id, user_type, item.user_id)">{{ item.first_name }} {{ item.last_name }}</span>
+                    <div class="champ-icon-img">
+                      <img (click)="viewProfile(user_id, user_type, item.user_id)" [src]="item.icon" alt="Post Image" />
                     </div>
                   </div>
                   <div class="right-title-score">

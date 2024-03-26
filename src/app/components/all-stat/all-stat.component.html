@@ -1,6 +1,9 @@
 <app-navbar></app-navbar>
 <div class="btn-back">
-  <button  class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backProfile(user_id)">Back</button>
+  <button *ngIf="!view_user_id" class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="backProfile(user_id)">Back</button>
+  <button *ngIf="view_user_id && !admin_id" class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="viewBackShowProfile(user_id, user_type, view_user_id)">Back</button>
+  <button *ngIf="admin_id" class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="adminBackShowProfile(admin_id, user_type, view_user_id)">Back</button>
+  <!-- <button  *ngIf="view_user_id" class="btn-edit" style=" background-color: #F51E3C; color: white;" mat-flat-button (click)="adminBackShowProfile(user_id)">Back</button> -->
 </div>
 <div class="container"  *ngIf="!chartData || chartData.length >= 1; else emptyState" >
     <div class="row">

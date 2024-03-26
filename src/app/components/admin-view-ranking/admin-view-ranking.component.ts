@@ -18,6 +18,7 @@ import axios from 'axios';
   styleUrl: './admin-view-ranking.component.scss'
 })
 export class AdminViewRankingComponent implements OnInit {
+
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
   rankingData: any[] = [];
   deltaRank: number = 0;
@@ -25,16 +26,24 @@ export class AdminViewRankingComponent implements OnInit {
   dateOptions: string[] = [];
   today: string = '';
   yesterday: string = '';
+  two_day_ago: string = '';
+  three_day_ago: string = '';
+  four_day_ago: string = '';
+  five_day_ago: string = '';
+  six_day_ago: string = '';
+  seven_day_ago: string = '';
   post_id: any;
   user_id: any;
   user_type: any;
   admin_id: any;
+  view_user_id: any;
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       this.admin_id = params['admin_id'];
       this.user_id = params['user_id'];
       this.user_type = params['user_type'];
+      this.view_user_id = params['view_user_id'];
       console.log('user_id: ', this.user_id);
     });
     this.fetchDateOptions();
@@ -51,6 +60,12 @@ export class AdminViewRankingComponent implements OnInit {
         this.dateOptions = response.data.dateOptions;
         this.selectedDate = this.dateOptions[0];
         this.yesterday = this.dateOptions[1];
+        this.two_day_ago = this.dateOptions[2];
+        this.three_day_ago = this.dateOptions[3];
+        this.four_day_ago = this.dateOptions[4];
+        this.five_day_ago = this.dateOptions[5];
+        this.six_day_ago = this.dateOptions[6];
+        this.seven_day_ago = this.dateOptions[7];
         this.filterByDate(this.selectedDate);
   
       } else {

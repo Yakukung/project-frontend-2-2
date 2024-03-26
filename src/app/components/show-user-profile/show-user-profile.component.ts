@@ -8,20 +8,28 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatChipListbox } from '@angular/material/chips';
+import {MatIconModule} from '@angular/material/icon';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-show-user-profile',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox,],
+  imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox,MatIconModule],
   templateUrl: './show-user-profile.component.html',
   styleUrl: './show-user-profile.component.scss'
 })
 export class ShowUserProfileComponent implements OnInit{
+
+  admin_user_type: any;
+  view_user_id: any;
+toggleLike(arg0: any) {
+throw new Error('Method not implemented.');
+}
 fileName: any;
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
 
+
+  isHovered: any;
   user_id: any;
-  user_type: any;
   Statistics: any;
   response: any;
   email: string = '';
@@ -32,8 +40,27 @@ fileName: any;
   icon: string = '';
   about: string = '';
   posts: any[] = [];
+  admin_id: string = '';
+  user_type: any;
+  userId: any;
 
   ngOnInit() {
+
+    this.route.queryParams.subscribe((params) => {
+      this.admin_id = params['admin_id'];
+      this.userId = params['user_id'];
+      this.user_type = params['user_type'];
+      this.view_user_id = params['view_user_id'];
+
+      console.log('admin_id: ', this.admin_id);
+      console.log('user_id: ', this.userId);
+      console.log('user_type: ', this.user_type);
+      console.log('this.view_user_id : ',this.view_user_id );
+  
+        this.fetchUserData(this.view_user_id);
+        this.fetchPostData(this.view_user_id);
+       
+    });
 
     Swal.fire({
       background:
@@ -54,14 +81,6 @@ fileName: any;
           }
         }
       },
-    });
-
-    this.route.queryParams.subscribe((params) => {
-      const user_id = params['user_id'];
-  
-        this.fetchUserData(user_id);
-        this.fetchPostData(user_id);
-       
     });
   }
   
@@ -112,4 +131,25 @@ fetchPostData(user_id: string) {
         }
       );
 }
+viewStat(user_id: string, user_type: string, view_user_id: string ) {
+  this.router.navigate(['/all-stat'], { queryParams: { user_id: user_id ,user_type: user_type, view_user_id: view_user_id } });
+  console.log(this.user_id);
+  
+}
+
+viewStatAdmin(admin_id: string, user_type: string, view_user_id: string) {
+  this.router.navigate(['/all-stat'], { queryParams: { admin_id: admin_id, user_type: user_type, view_user_id: view_user_id } });
+  console.log(admin_id);
+}
+backRanking(user_id: string, user_type: string) {
+  this.router.navigate(['/ranking'], { queryParams: { user_id: user_id, user_type: user_type } });
+  }
+  adminBackAllUser(admin_id: string, user_type: string) {
+    this.router.navigate(['/admin-view-user'], { queryParams: { admin_id: admin_id, user_type: user_type} });
+    }
+
+
+
+iconSize: string = '100px';
+isLikedMap: { [post_id: string]: boolean } = {};
 }

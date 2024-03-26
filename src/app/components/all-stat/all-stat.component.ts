@@ -26,12 +26,15 @@ interface ChartDataItem {
   styleUrl: './all-stat.component.scss'
 })
 export class AllStatComponent implements OnInit, OnDestroy {
+
   user_id: string = '';
   chart: any;
   chartData: any[] = [];
   private chartSubscription: Subscription;
   postIds: number[] = [];
   user_type: any;
+  view_user_id: any;
+  admin_id: any;
 
   constructor(
     private router: Router,
@@ -43,9 +46,27 @@ export class AllStatComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) => {
       this.user_id = params['user_id'];
+      this.user_type = params['user_type'];
+      this.admin_id = params['admin_id'];
+      this.view_user_id = params['view_user_id'];
+
       console.log('user_id: ', this.user_id);
-    
-      this.fetchGraphAllPost(this.user_id);
+      console.log('admin_id: ', this.admin_id);
+      console.log('view_user_id: ',this.view_user_id);
+      console.log('user_type: ', this.user_type);
+      
+      if(this.view_user_id === undefined ){
+        this.fetchGraphAllPost(this.user_id);
+        console.log("1");
+      }
+      if(this.user_id === this.view_user_id){
+        this.fetchGraphAllPost(this.user_id);
+        console.log("2");
+      }
+      if(this.view_user_id !== undefined && this.user_id !== this.view_user_id){
+        this.fetchGraphAllPost(this.view_user_id);
+        console.log("3");
+      }
     });
   }
   
@@ -62,11 +83,29 @@ export class AllStatComponent implements OnInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.route.queryParams.subscribe((params) => {
-      const user_id = params['user_id'];
+      this.user_id = params['user_id'];
       this.user_type = params['user_type'];
-      console.log('user_id: ', user_id);
-  
-      this.fetchGraphAllPost(user_id);
+      this.admin_id = params['admin_id'];
+      this.view_user_id = params['view_user_id'];
+
+      console.log('user_id: ', this.user_id);
+      console.log('admin_id: ', this.admin_id);
+      console.log('view_user_id: ',this.view_user_id);
+      console.log('user_type: ', this.user_type);
+    
+      if(this.view_user_id === undefined ){
+        this.fetchGraphAllPost(this.user_id);
+        console.log("1");
+      }
+      if(this.user_id === this.view_user_id){
+        this.fetchGraphAllPost(this.user_id);
+        console.log("2");
+      }
+      if(this.view_user_id !== undefined && this.user_id !== this.view_user_id){
+        this.fetchGraphAllPost(this.view_user_id);
+        console.log("3");
+      }
+   
     });
   }
   
@@ -148,4 +187,11 @@ export class AllStatComponent implements OnInit, OnDestroy {
   backProfile(user_id: string) {
     this.router.navigate(['/profile'], { queryParams: { user_id: this.user_id, user_type: this.user_type} });
     }
+
+    adminBackShowProfile(admin_id: string, user_type: string, view_user_id: string) {
+      this.router.navigate(['/show-user-profile'], { queryParams: { admin_id: admin_id, user_type: user_type, view_user_id: view_user_id } });
+      }
+    viewBackShowProfile(user_id: string, user_type: string, view_user_id: string) {
+      this.router.navigate(['/show-user-profile'], { queryParams: { user_id: user_id, user_type: user_type, view_user_id: view_user_id } });
+      }
 }

@@ -40,6 +40,8 @@ export class AdminViewUserComponent implements OnInit {
       this.user_id = params['user_id'];
       this.user_type = params['user_type'];
       console.log('user_id: ', this.user_id);
+      console.log('admin_id : ',this.admin_id );
+      console.log('user_type: ', this.user_type);
     });
     this.fetchAllUser();
   }
@@ -79,7 +81,8 @@ export class AdminViewUserComponent implements OnInit {
       console.error('Error fetching data:', error);
     }
   }
-  viewProfile(admin_id: string, user_type: string,  user_id: string) {
-    this.router.navigate(['/show-user-profile'], { queryParams: {admin_id: admin_id, user_type: user_type, user_id: user_id,} });
+  viewProfile(admin_id: string,  user_type: any, view_user_id: any) {
+    this.router.navigate(['/show-user-profile'], { queryParams: { admin_id: admin_id, user_type: user_type, view_user_id: view_user_id}});
+
   }
 }

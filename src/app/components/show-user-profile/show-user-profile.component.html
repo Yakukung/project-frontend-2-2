@@ -1,26 +1,36 @@
 <app-navbar></app-navbar>
 <div class="banner">
     <img *ngIf="banner" src="{{ banner }}" alt="banner image">
-    <p *ngIf="!banner">No picture</p>
+
 </div>
 <div *ngIf="user_id; else emptyState" class="container">
     <div class="tab">
         <div class="title-head">
             <div class="icon-profile">
-                <img src="{{ icon }}" alt="icon">
+                <img class="profile-image" *ngIf="icon" [src]="icon" alt="icon">
+                <img class="profile-image" *ngIf="!icon" src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2Fperson-profile-image-icon.png?alt=media&token=3b2664ba-a62a-4b13-8c64-b23f316572ff" alt="icon">
             </div>
             <span>{{ first_name }} {{ last_name }}</span>
         </div>
+        <div class="btn">
+            <button *ngIf="!admin_id" class="btn-statistics" style="background-color: #efeff2; color: #F62643;" mat-flat-button (click)="viewStat(userId, user_type, view_user_id)">Statistics</button>
+            <button *ngIf="admin_id"class="btn-statistics" style="background-color: #efeff2; color: #F62643;" mat-flat-button (click)="viewStatAdmin(admin_id, user_type, view_user_id)">Statistics</button>
+       
+            <button *ngIf="!admin_id" class="btn-statistics" style="background-color: #F62643; color: #efeff2;" mat-flat-button (click)="backRanking(userId, user_type)">Back</button>
+            <button *ngIf="admin_id" class="btn-statistics" style="background-color: #F62643; color: #efeff2;" mat-flat-button (click)="adminBackAllUser(admin_id, user_type)">Back</button>
+        </div>
+        
     </div>
     <div class="row">
         <div class="col-5">
             <h1>About: </h1>
             <p>{{ about }}</p>
+            <p *ngIf="!about" style="text-align: center;">No! about, Please add  about your to the edit page.</p>
         </div>
         <div class="col-7">
             <div class="container-card">
                 <div *ngFor="let post of posts" class="row">
-                    <div class="card-post">
+                    <div class="card-post" *ngIf="post.post_id > 0">
                         <div class="card-head">
                             <div class="title">
                                 <div class="icon">
@@ -34,6 +44,18 @@
                         </div>
                         <div class="card-body">
                             <img src="{{ post.picture }}" alt="">
+                        </div>
+                        <div class="card-lower">
+                            <button class="btn like-button" [class.active]="isLikedMap[post.post_id]" (click)="toggleLike(post.post_id)">
+                                <mat-icon class="like-icon">favorite</mat-icon>
+                            </button>
+                            <button class="btn chart">
+                                <mat-icon class="chat-icon">chat</mat-icon>
+                            </button>
+                            <button class="btn share">
+                                <mat-icon class="share-icon">share</mat-icon> 
+                            </button>
+                            <p class="vote-count">{{ post.score }} Vote</p>
                         </div>
                     </div>
                 </div>
