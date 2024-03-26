@@ -218,7 +218,7 @@ UploadPost(event: any, user_id: string, first_name: string) {
           (response: any) => {
               console.log('Upload successful: ', response);
               Swal.fire({
-                title: `Upload Banner success`,
+                title: `Upload Post success`,
                 icon: 'success',
               }).then(() => {
                 // จากนั้นทำการรีโหลดหน้าเว็บ

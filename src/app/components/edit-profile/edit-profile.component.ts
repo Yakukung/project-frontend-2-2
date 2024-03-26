@@ -156,7 +156,7 @@ throw new Error('Method not implemented.');
       
       this.httpClient.put(updateUrl, requestBody).subscribe(
           (response: any) => {
-              console.log('Update Firstname successful: ', response);
+              console.log('Update Lastname successful: ', response);
               Swal.fire({
                 title: `Update Firstname success`,
                 icon: 'success',
@@ -385,7 +385,7 @@ UploadPost(event: any, index: number, user_id: string, post_id: string, first_na
           (response: any) => {
               console.log('Upload successful: ', response);
               Swal.fire({
-                title: `Upload Banner success`,
+                title: `Upload Post success`,
                 icon: 'success',
               }).then(() => {
                 // จากนั้นทำการรีโหลดหน้าเว็บ
