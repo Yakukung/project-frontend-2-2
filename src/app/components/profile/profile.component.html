@@ -55,7 +55,8 @@
                         <div class="card-head">
                             <div class="title">
                                 <div class="icon">
-                                    <img src="{{ icon }}" alt="">
+                                    <img src="{{ icon }}" *ngIf="icon"  alt="">
+                                    <img class="profile-image" *ngIf="!icon" src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2Fperson-profile-image-icon.png?alt=media&token=3b2664ba-a62a-4b13-8c64-b23f316572ff" alt="icon">
                                 </div>
                                 <span>{{ first_name }} {{ last_name }}</span>
                             </div>
