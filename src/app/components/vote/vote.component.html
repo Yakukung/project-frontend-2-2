@@ -24,7 +24,8 @@
             </div>
             <div class="icon" *ngIf="checkSignin"
               (click)="profile(show[0]?.user_id)">
-              <img [src]="show[0].icon" alt="Post Image" />
+              <img *ngIf="show[0]?.icon" [src]="show[0].icon" alt="Post Image" />
+              <img *ngIf="!show[0]?.icon" src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2Fperson-profile-image-icon.png?alt=media&token=3b2664ba-a62a-4b13-8c64-b23f316572ff" alt="Post Image" />
             </div>
           </div>
           <span *ngIf="!checkSignin">Unknown Person</span>
@@ -45,7 +46,8 @@
           </div>
           <div class="icon" *ngIf="checkSignin"
             (click)="profile(show[1]?.user_id)">
-            <img [src]="show[1].icon" alt="Post Image" />
+            <img *ngIf="show[1]?.icon" [src]="show[1].icon" alt="Post Image" />
+            <img *ngIf="!show[1]?.icon" src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2Fperson-profile-image-icon.png?alt=media&token=3b2664ba-a62a-4b13-8c64-b23f316572ff" alt="Post Image" />
           </div>
           <span *ngIf="!checkSignin">Unknown Person</span>
           <span *ngIf="checkSignin">{{show[1].first_name}}
