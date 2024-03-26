@@ -28,7 +28,8 @@
                   <div class="champ-icon">
                     <span (click)="viewProfile(user_id, user_type, item.user_id)">{{ item.first_name }} {{ item.last_name }}</span>
                     <div class="champ-icon-img">
-                      <img (click)="viewProfile(user_id, user_type, item.user_id)" [src]="item.icon" alt="Post Image" />
+                      <img *ngIf="item.icon" (click)="viewProfile(user_id, user_type, item.user_id)" [src]="item.icon" alt="Post Image" />
+                      <img  *ngIf="!item.icon" (click)="viewProfile(user_id, user_type, item.user_id)" src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2Fperson-profile-image-icon.png?alt=media&token=3b2664ba-a62a-4b13-8c64-b23f316572ff" alt="Post Image" />
                     </div>
                     
                   </div>
