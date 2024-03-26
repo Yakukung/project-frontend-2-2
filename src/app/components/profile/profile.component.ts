@@ -86,7 +86,7 @@ Statistics: any;
   }
   
   fetchUserData(user_id: string) {
-    const url = `http://localhost:3000/facemash/navbar`;
+    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -111,7 +111,7 @@ Statistics: any;
     );
   }
 fetchPostData(user_id: string) {
-    const Url = `http://localhost:3000/facemash/profile`;
+    const Url = `https://project-backend-2-2.onrender.com/facemash/profile`;
   
     this.httpClient.post(Url, { user_id })
       .subscribe(
@@ -153,7 +153,7 @@ fetchPostData(user_id: string) {
         formData.append('first_name', first_name);
         formData.append('user_id', user_id);
         
-        const postUrl = `http://localhost:3000/facemash/upload/banner`;
+        const postUrl = `https://project-backend-2-2.onrender.com/facemash/upload/banner`;
         this.httpClient.post(postUrl, formData).subscribe(
             (response: any) => {
                 console.log('Upload successful: ', response);
@@ -183,7 +183,7 @@ fetchPostData(user_id: string) {
         formData.append('first_name', first_name);
         formData.append('user_id', user_id);
         
-        const postUrl = `http://localhost:3000/facemash/upload/icon`;
+        const postUrl = `https://project-backend-2-2.onrender.com/facemash/upload/icon`;
         this.httpClient.post(postUrl, formData).subscribe(
             (response: any) => {
                 console.log('Upload successful: ', response);
@@ -213,7 +213,7 @@ UploadPost(event: any, user_id: string, first_name: string) {
       formData.append('user_id', user_id);
       formData.append('first_name', first_name);
       
-      const postUrl = `http://localhost:3000/facemash/upload/post`;
+      const postUrl = `https://project-backend-2-2.onrender.com/facemash/upload/post`;
       this.httpClient.post(postUrl, formData).subscribe(
           (response: any) => {
               console.log('Upload successful: ', response);

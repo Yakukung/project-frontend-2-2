@@ -25,6 +25,7 @@
     "@angular/ssr": "^17.0.3",
     "@swimlane/ngx-charts": "^20.5.0",
     "@types/cors": "^2.8.17",
+    "@vercel/speed-insights": "^1.0.10",
     "axios": "^1.6.7",
     "body-parser": "^1.20.2",
     "chart.js": "^4.4.2",
