@@ -10,6 +10,7 @@
         font-family: "Newsreader", serif;
         font-size: 60px;
         font-weight: 300;
+
     }
     & .title2{
         font-size: 40px;
@@ -18,16 +19,26 @@
     }
     & h1{
         margin-top: 3rem;
-        font-size: 90px;
+        font-size: 120px;
         font-family: "Newsreader", serif;
-        font-weight: 400;  
+        font-weight: 900;  
         transition: transform 0.5s ease, box-shadow 0.3s ease;
         &:hover{
           transform: scale(1.025);
         }
+        background-image: url("https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2FInShot_20240327_034213138.gif?alt=media&token=1908c6f3-5d14-43e2-8c49-0550ecd8d025");
+        background-size: cover;
+        background-position: center;
+        color: transparent;
+        background-clip: text;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: -0.1rem;
     }
     & p{
-        margin-top: 3rem;
+        margin-top: 1rem;
         font-size: 50px;
         font-family: "Newsreader", serif;
         font-weight: 400;
@@ -61,6 +72,8 @@
         font-weight: 400;
     }
     & img{
+        aspect-ratio: 2/3;
+        object-fit: cover;
         transition: transform 0.5s ease, box-shadow 0.3s ease;
         &:hover{
           transform: scale(1.025);
