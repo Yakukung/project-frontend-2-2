@@ -33,6 +33,18 @@ export class SigninOrSignupComponent {
 
   getSignUp(firstNameInput: HTMLInputElement, lastNameInput: HTMLInputElement, emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
     const url = 'https://project-backend-2-2.onrender.com/facemash/signup/';
+    
+    // Check if any of the input fields are empty
+    if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value) {
+      console.error('Please fill in all fields.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please fill in all fields.",
+      });
+      return; // Stop execution if any field is empty
+    }
+  
     const userData = {
       first_name: firstNameInput.value,
       last_name: lastNameInput.value,
@@ -45,7 +57,7 @@ export class SigninOrSignupComponent {
     this.httpClient.post(url, userData).subscribe(
       (response: any) => {
         console.log('User successfully signed up:', response);
-
+  
         Swal.fire({
           icon: "success",
           title: "Success",
@@ -76,6 +88,7 @@ export class SigninOrSignupComponent {
       }
     );
   }
+  
   
 
   async getSignIn(email: string, password: string) {
