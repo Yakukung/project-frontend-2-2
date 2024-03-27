@@ -36,16 +36,18 @@
         align-items: center;
         justify-content: center;
         margin-top: -0.1rem;
+        margin-bottom: -0.5rem;
     }
     & p{
         margin-top: 1rem;
+        margin-bottom: 4rem;
         font-size: 50px;
         font-family: "Newsreader", serif;
         font-weight: 400;
     } 
 }
 .btn-vote{
-    margin-top: 3rem;
+    margin-top: -2rem;
     & button{
         background-color: #F51E3C;
         color: white;
