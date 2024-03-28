@@ -23,7 +23,7 @@
                 <img src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F1.png?alt=media&token=45cd43d2-4187-480f-972d-41aa04bb2458" alt="" width="100%">
               </div>
               <div class="champ-card-head">
-                <img [src]="item.picture" alt="">
+                <img class="picture" [src]="item.picture" alt="">
                 <div class="champ-card-title">
                   <div class="champ-icon">
                     <span (click)="viewProfile(user_id, user_type, item.user_id)">{{ item.first_name }} {{ item.last_name }}</span>
@@ -86,7 +86,7 @@
                     <button (click)="about(item.post_id, user_id, user_type)" mat-flat-button>About</button>
                   </div>
                 </div>
-                <img [src]="item.picture" alt="">
+                <img class="picture_two" [src]="item.picture" alt="">
               </div>
               <div class="no-2">
                 <img src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F3.png?alt=media&token=09fe03ee-6cbc-4ef1-a945-086d9f1730f0" alt="" width="100%">
@@ -97,10 +97,10 @@
           <div *ngFor="let item of rankingData.slice(2, 3); let i = index" class="row">
             <div class="champ-card-ranking">
               <div class="no-1">
-               <img src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F2.png?alt=media&token=cd0a4903-0057-47a1-9e35-b21395cd99c2" alt="" width="100%">
+               <img  src="https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2FiconRank%2F2.png?alt=media&token=cd0a4903-0057-47a1-9e35-b21395cd99c2" alt="" width="100%">
               </div>
               <div class="champ-card-head">
-                <img [src]="item.picture" alt="">
+                <img class="picture" [src]="item.picture" alt="">
                 <div class="champ-card-title">
                   <div class="champ-icon">
                     <span (click)="viewProfile(user_id, user_type, item.user_id)">{{ item.first_name }} {{ item.last_name }}</span>

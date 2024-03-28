@@ -8,7 +8,7 @@ mat-toolbar{
     left: 0;
     background-color: rgba(255, 255, 255, 0.483); 
     backdrop-filter: blur(35px);
-    z-index: 1000;
+    z-index: 2000;
     & .nav-left{
         color: #F51E3C;
         font-size: 40px;

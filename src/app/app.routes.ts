@@ -13,6 +13,7 @@ import { AdminHomepageComponent } from './components/admin-homepage/admin-homepa
 import { ShowUserProfileComponent } from './components/show-user-profile/show-user-profile.component';
 import { AdminViewRankingComponent } from './components/admin-view-ranking/admin-view-ranking.component';
 import { AdminViewUserComponent } from './components/admin-view-user/admin-view-user.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 export const routes: Routes = [
     { path: 'signin-or-signup', component: SigninOrSignupComponent},
@@ -28,5 +29,6 @@ export const routes: Routes = [
     { path: 'show-user-profile', component: ShowUserProfileComponent},
     { path: 'admin-view-ranking', component: AdminViewRankingComponent },
     { path: 'admin-view-user', component: AdminViewUserComponent },
+    { path: 'reset-password', component:  ResetPasswordComponent },
 
 ];

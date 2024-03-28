@@ -17,7 +17,7 @@
                             <input matInput placeholder="" type="password" #password name="password">
                         </div>
                         <button mat-flat-button (click)="getSignIn(email.value, password.value)">Sign In</button>
-                        <h5>Forgot your password? <span>Here</span></h5>
+                        <h5>Forgot your password? <span (click)="resetPass()" style="cursor: pointer;">Here</span></h5>
                     </div>
                  </div>
             </div>

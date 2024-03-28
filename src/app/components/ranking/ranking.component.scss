@@ -52,12 +52,30 @@ hr {
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     }
   }
-  & img {
+  & .picture {
     border-radius: 30px;
     width: 550px;
     height: 230px;
     object-fit: cover;
     aspect-ratio: 16/9;
+    transition: transform 0.5s ease;
+    &:hover{
+      transform: scale(2) translateX(15%) translateY(15%) ;
+    }
+    z-index: 1000;
+  }
+
+  & .picture_two {
+    border-radius: 30px;
+    width: 550px;
+    height: 230px;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+    transition: transform 0.5s ease;
+    &:hover{
+      transform: scale(2) translateX(-15%) translateY(15%) ;
+    }
+    z-index: 1000;
   }
 
   & .champ-card-title {
@@ -70,18 +88,24 @@ hr {
       justify-content: flex-end;
       align-items: center;
       margin-top: 0.5rem;
-      margin-right: 1.5rem;
+      margin-right: 1rem;
       
       & span {
         font-size: 16px;
         font-weight: 500;
         margin-right: 0.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: wrap;
+        width: 175px;
         
       }
       & img {
-        border-radius: 30px;
+        border-radius: 100%;
         width: 40px;
         height: 40px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
         transition: transform 0.5s ease, box-shadow 0.3s ease;
         &:hover{
           transform: scale(1.5);
@@ -122,6 +146,7 @@ hr {
     z-index: 100;
     margin-right: -4rem;
     margin-top: -9rem;
+    z-index: 1001;
     & img {
       width: 97px;
       height: 120px;
@@ -131,6 +156,7 @@ hr {
     z-index: 100;
     margin-left: -4rem;
     margin-top: -9rem;
+    z-index: 1001;
     & img {
       width: 97px;
       height: 120px;
@@ -197,6 +223,11 @@ h1 {
     height: 130px;
     object-fit: cover;
     aspect-ratio: 16/9;
+    transition: transform 0.5s ease;
+    &:hover{
+      transform: scale(2.3) translateX(23%) translateY(15%) ;
+    }
+    z-index: 1000;
     
   }
 

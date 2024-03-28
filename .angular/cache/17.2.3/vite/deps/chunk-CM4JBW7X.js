@@ -6,12 +6,14 @@ import {
   trigger
 } from "./chunk-3VLVJWEG.js";
 import {
+  MatCommonModule
+} from "./chunk-JFYYWCWG.js";
+import {
   Directionality,
-  MatCommonModule,
   ObserversModule,
   Platform,
   coerceBooleanProperty
-} from "./chunk-PNAFKJB5.js";
+} from "./chunk-SHT3HJL2.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -1581,4 +1583,4 @@ export {
   MatFormField,
   MatFormFieldModule
 };
-//# sourceMappingURL=chunk-7R4DDOZO.js.map
+//# sourceMappingURL=chunk-CM4JBW7X.js.map
