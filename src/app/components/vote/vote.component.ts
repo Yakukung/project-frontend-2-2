@@ -70,7 +70,7 @@ export class VoteComponent implements OnInit {
     }
   }
 
-  async vote(winnerPostId: number, loserPostId: number) {
+  async vote(winnerPostId: number, loserPostId: number, votedSide: string) {
     const URL = 'https://project-backend-2-2.onrender.com/facemash/vote';
     let timerInterval: string | number | NodeJS.Timeout | undefined;
 
@@ -105,7 +105,9 @@ export class VoteComponent implements OnInit {
         console.log('I was closed by the timer');
       }
       Swal.fire({
-        title: `You Vote Post ID: ${winnerPostId}`,
+        title: `You vote on the ${votedSide}`,
+        text: `Post ID Winer: ${winnerPostId}`,
+        
         icon: 'success',
       }).then(() => {
         // จากนั้นทำการรีโหลดหน้าเว็บ
