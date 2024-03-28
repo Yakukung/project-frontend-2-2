@@ -54,7 +54,7 @@ export class VoteComponent implements OnInit {
     });
 
     try {
-      const HOST: string = 'http://localhost:3000';
+      const HOST: string = 'https://project-backend-2-2.onrender.com';
       const url = `${HOST}/facemash/vote`;
 
       const response = await axios.get(url);
@@ -71,7 +71,7 @@ export class VoteComponent implements OnInit {
   }
 
   async vote(winnerPostId: number, loserPostId: number) {
-    const URL = 'http://localhost:3000/facemash/vote';
+    const URL = 'https://project-backend-2-2.onrender.com/facemash/vote';
     let timerInterval: string | number | NodeJS.Timeout | undefined;
 
     Swal.fire({
@@ -163,7 +163,7 @@ export class VoteComponent implements OnInit {
   }
 
   async profile(userId: number) {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-backend-2-2.onrender.com';
     const url = `${HOST}/facemash/profile`;
 
     // Load user profile data
