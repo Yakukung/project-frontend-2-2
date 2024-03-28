@@ -44,6 +44,15 @@ export class SigninOrSignupComponent {
       });
       return; // Stop execution if any field is empty
     }
+    if (emailInput.value && !this.isValidEmail(emailInput.value)) {
+      console.error('Please enter a valid email address.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please enter a valid email address.",
+      });
+      return; // Stop execution if email format is invalid
+    }
   
     const userData = {
       first_name: firstNameInput.value,
@@ -88,6 +97,12 @@ export class SigninOrSignupComponent {
       }
     );
   }
+  // Function to validate email format
+isValidEmail(email: string): boolean {
+  // Regular expression for email validation
+  const emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
   
   
 

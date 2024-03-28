@@ -12,7 +12,7 @@
         <button mat-flat-button *ngIf="user_type === 'admin'" (click)="adminHome()">Home</button>
         <button mat-flat-button *ngIf="user_type === 'admin'" (click)="adminViewUser()" [ngClass]="{'active-icon': isButtonActive('/admin-view-user') || isButtonActive('/show-user-profile')}">All Users</button>
         <button mat-flat-button *ngIf="user_type === 'admin'" (click)="adminViewRanking()" [ngClass]="{'active-icon': isButtonActive('/admin-view-ranking')}">All Ranking</button>
-        <button mat-flat-button (click)="signup(user_id)" class="btn-login">{{ first_name ? first_name : 'Sign In' }}</button>
+        <button mat-flat-button (click)="sign(user_id, admin_id)" class="btn-login">{{ user_id || admin_id ? 'Sign Out' : 'Sign In' }}</button>
 
         
     </div>

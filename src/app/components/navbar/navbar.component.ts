@@ -66,8 +66,8 @@ export class NavbarComponent {
     return isActive;
   }
   
-  signup(user_id: string) {
-      if (user_id) {
+  sign(user_id: string, admin_id: string) {
+      if (user_id || admin_id) {
         Swal.fire({
           title: "Are you sure you want to sign out?",
           imageUrl: "https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22",
