@@ -71,7 +71,7 @@ export class StatisticsComponent implements OnInit, OnDestroy {
   }
 
   fetchGraphData(post_id: string): void {
-    const url = `http://localhost:3000/facemash/stat/select-post`;
+    const url = `https://project-backend-2-2.onrender.com/facemash/stat/select-post`;
 
     this.chartSubscription = this.httpClient
       .post<any[]>(url, { post_id })
