@@ -105,7 +105,7 @@ export class VoteComponent implements OnInit {
         '#fff url(https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22) center center/contain no-repeat',
       html: "<div style='position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center;'>I will close in <b></b> milliseconds.</div>",
       padding: '4rem',
-      timer: parseInt(this.timerDuration), // or parseFloat(this.timerDuration)
+      timer: 3000, // or parseFloat(this.timerDuration)
       timerProgressBar: true,
       showConfirmButton: false,
       allowOutsideClick: false,
