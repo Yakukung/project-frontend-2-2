@@ -73,7 +73,7 @@ throw new Error('Method not implemented.');
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/navbar`;
+    const url = `http://localhost:3000/facemash/navbar`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {
@@ -97,7 +97,7 @@ throw new Error('Method not implemented.');
     );
   }
   fetchPostData(user_id: string) {
-    const postUrl = `https://project-backend-2-2.onrender.com/facemash/profile`;
+    const postUrl = `http://localhost:3000/facemash/profile`;
   
     this.httpClient.post(postUrl, { user_id })
       .subscribe(
@@ -127,8 +127,21 @@ throw new Error('Method not implemented.');
     updateFirstname(first_name: string, user_id: string) {
       console.log("first_name: ", first_name);
       console.log("user_id: ", user_id);
+
+
+      Swal.fire({
+        title: "Are you sure you want to update this firstname?",
+        imageUrl: "https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22",
+        imageWidth: 200,
+        imageHeight: 200,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+      }).then((result) => {
+        if (result.isConfirmed) {
       
-      const updateUrl = `https://project-backend-2-2.onrender.com/facemash/upload/firstname`;
+      const updateUrl = `http://localhost:3000/facemash/upload/firstname`;
       const requestBody = { first_name: first_name, user_id: user_id }; 
       
       this.httpClient.put(updateUrl, requestBody).subscribe(
@@ -143,22 +156,36 @@ throw new Error('Method not implemented.');
           },
           (error: any) => {
               console.error('Error updating firstname: ', error);
+            }
+            );
           }
-      );
+      });
     }
 
     updateLastname(last_name: string, user_id: string) {
       console.log("last_name: ", last_name);
       console.log("user_id: ", user_id);
+
+      Swal.fire({
+        title: "Are you sure you want to update this lastname?",
+        imageUrl: "https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22",
+        imageWidth: 200,
+        imageHeight: 200,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+      }).then((result) => {
+        if (result.isConfirmed) {
       
-      const updateUrl = `https://project-backend-2-2.onrender.com/facemash/upload/lastname`;
+      const updateUrl = `http://localhost:3000/facemash/upload/lastname`;
       const requestBody = { last_name: last_name, user_id: user_id }; 
       
       this.httpClient.put(updateUrl, requestBody).subscribe(
           (response: any) => {
               console.log('Update Lastname successful: ', response);
               Swal.fire({
-                title: `Update Firstname success`,
+                title: `Update Lastname success`,
                 icon: 'success',
               }).then(() => {
                 window.location.reload();
@@ -166,14 +193,101 @@ throw new Error('Method not implemented.');
           },
           (error: any) => {
               console.error('Error updating firstname: ', error);
+            }
+            );
           }
-      );
+      });
+    }
+
+    updateEmail(email: string, user_id: string) {
+      console.log("email: ", email);
+      console.log("user_id: ", user_id);
+
+      Swal.fire({
+        title: "Are you sure you want to update this email?",
+        imageUrl: "https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22",
+        imageWidth: 200,
+        imageHeight: 200,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+      }).then((result) => {
+        if (result.isConfirmed) {
+      
+      const updateUrl = `http://localhost:3000/facemash/upload/email`;
+      const requestBody = { email: email, user_id: user_id }; 
+      
+      this.httpClient.put(updateUrl, requestBody).subscribe(
+          (response: any) => {
+              console.log('Update Email successful: ', response);
+              Swal.fire({
+                title: `Update Email success`,
+                icon: 'success',
+              }).then(() => {
+                window.location.reload();
+              });
+          },
+          (error: any) => {
+              console.error('Error updating firstname: ', error);
+            }
+            );
+          }
+      });
+    }
+    updatePassword(password: string, user_id: string) {
+      console.log("password: ", password);
+      console.log("user_id: ", user_id);
+
+      Swal.fire({
+        title: "Are you sure you want to update this password?",
+        imageUrl: "https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22",
+        imageWidth: 200,
+        imageHeight: 200,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+      }).then((result) => {
+        if (result.isConfirmed) {
+      
+      const updateUrl = `http://localhost:3000/facemash/upload/password`;
+      const requestBody = { password: password, user_id: user_id }; 
+      
+      this.httpClient.put(updateUrl, requestBody).subscribe(
+          (response: any) => {
+              console.log('Update Password successful: ', response);
+              Swal.fire({
+                title: `Update Password success`,
+                icon: 'success',
+              }).then(() => {
+                window.location.reload();
+              });
+          },
+          (error: any) => {
+              console.error('Error updating firstname: ', error);
+            }
+            );
+          }
+      });
     }
     updateAbout(about: string, user_id: string) {
       console.log("about: ", about);
       console.log("user_id: ", user_id);
+
+      Swal.fire({
+        title: "Are you sure you want to update this about?",
+        imageUrl: "https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22",
+        imageWidth: 200,
+        imageHeight: 200,
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes"
+      }).then((result) => {
+        if (result.isConfirmed) {
   
-      const updateUrl = `https://project-backend-2-2.onrender.com/facemash/upload/about`;
+      const updateUrl = `http://localhost:3000/facemash/upload/about`;
       const requestBody = { about: about, user_id: user_id };
   
       this.httpClient.put(updateUrl, requestBody).subscribe(
@@ -188,8 +302,10 @@ throw new Error('Method not implemented.');
           },
           (error: any) => {
               console.error('Error updating about: ', error);
+            }
+            );
           }
-      );
+      });
   }
 
   deleteIcon(icon: string, user_id: string) {
@@ -206,7 +322,7 @@ throw new Error('Method not implemented.');
       confirmButtonText: "Yes"
     }).then((result) => {
       if (result.isConfirmed) {
-        const updateUrl = `https://project-backend-2-2.onrender.com/facemash/upload/delete-icon?user_id=${user_id}`;
+        const updateUrl = `http://localhost:3000/facemash/upload/delete-icon?user_id=${user_id}`;
 
         this.httpClient.delete(updateUrl).subscribe(
             (response: any) => {
@@ -241,7 +357,7 @@ throw new Error('Method not implemented.');
       confirmButtonText: "Yes"
     }).then((result) => {
       if (result.isConfirmed) {
-        const updateUrl = `https://project-backend-2-2.onrender.com/facemash/upload/delete-banner?user_id=${user_id}`;
+        const updateUrl = `http://localhost:3000/facemash/upload/delete-banner?user_id=${user_id}`;
 
         this.httpClient.delete(updateUrl).subscribe(
             (response: any) => {
@@ -278,7 +394,7 @@ deletePost(post_id: string, user_id: string) {
     confirmButtonText: "Yes"
   }).then((result) => {
     if (result.isConfirmed) {
-      const updateUrl = `https://project-backend-2-2.onrender.com/facemash/upload/delete-post?post_id=${post_id}`;
+      const updateUrl = `http://localhost:3000/facemash/upload/delete-post?post_id=${post_id}`;
 
       this.httpClient.delete(updateUrl).subscribe(
           (response: any) => {
@@ -316,7 +432,7 @@ UploadIcon(event: any, first_name: string, user_id: string) {
         formData.append('first_name', first_name);
         formData.append('user_id', user_id);
         
-        const postUrl = `https://project-backend-2-2.onrender.com/facemash/upload/icon`;
+        const postUrl = `http://localhost:3000/facemash/upload/icon`;
         this.httpClient.post(postUrl, formData).subscribe(
             (response: any) => {
                 console.log('Upload successful: ', response);
@@ -347,7 +463,7 @@ UploadBanner(event: any, first_name: string, user_id: string) {
       formData.append('first_name', first_name);
       formData.append('user_id', user_id);
       
-      const postUrl = `https://project-backend-2-2.onrender.com/facemash/upload/banner`;
+      const postUrl = `http://localhost:3000/facemash/upload/banner`;
       this.httpClient.post(postUrl, formData).subscribe(
           (response: any) => {
               console.log('Upload successful: ', response);
@@ -380,7 +496,7 @@ UploadPost(event: any, index: number, user_id: string, post_id: string, first_na
       formData.append('user_id', user_id);
       formData.append('first_name', first_name);
       
-      const postUrl = `https://project-backend-2-2.onrender.com/facemash/upload/post`;
+      const postUrl = `http://localhost:3000/facemash/upload/post`;
       this.httpClient.post(postUrl, formData).subscribe(
           (response: any) => {
               console.log('Upload successful: ', response);

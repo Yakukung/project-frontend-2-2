@@ -41,6 +41,26 @@
                         <button mat-flat-button (click)="updateLastname(lastname.value, user_id)">Edit</button>
                     </div>
                  </div>
+                 <div class="lastname">
+                     <span>Email:</span>
+                     <mat-form-field appearance="outline">
+                         <mat-label>{{email}}</mat-label>
+                         <input matInput placeholder="" type="text"  #emailValue>
+                       </mat-form-field>
+                       <div class="btn-lastname">
+                        <button mat-flat-button (click)="updateEmail(emailValue.value, user_id)">Edit</button>
+                    </div>
+                 </div>
+                 <div class="lastname">
+                     <span>Password:</span>
+                     <mat-form-field appearance="outline">
+                         <mat-label>{{password}}</mat-label>
+                         <input matInput placeholder="" type="password" #passwordValue>
+                       </mat-form-field>
+                       <div class="btn-lastname">
+                        <button mat-flat-button (click)="updatePassword(passwordValue.value, user_id)">Edit</button>
+                    </div>
+                 </div>
                  <div class="about">
                     <span>About:</span>
                     <mat-form-field>

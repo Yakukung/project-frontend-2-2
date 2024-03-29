@@ -5,11 +5,15 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-vote',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, MatButtonModule],
+  imports: [CommonModule, NavbarComponent, MatButtonModule, MatFormFieldModule,MatInputModule, MatSelectModule, FormsModule],
   templateUrl: './vote.component.html',
   styleUrls: ['./vote.component.scss'],
 })
@@ -19,6 +23,8 @@ export class VoteComponent implements OnInit {
   PictureID: number[] = [];
   user_id: any;
   checkSignin: any = '';
+  colorControl: any;
+  timerDuration = 1000; 
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
@@ -54,7 +60,7 @@ export class VoteComponent implements OnInit {
     });
 
     try {
-      const HOST: string = 'https://project-backend-2-2.onrender.com';
+      const HOST: string = 'http://localhost:3000';
       const url = `${HOST}/facemash/vote`;
 
       const response = await axios.get(url);
@@ -71,17 +77,19 @@ export class VoteComponent implements OnInit {
   }
 
   async vote(winnerPostId: number, loserPostId: number, votedSide: string) {
-    const URL = 'https://project-backend-2-2.onrender.com/facemash/vote';
+    const URL = 'http://localhost:3000/facemash/vote';
     let timerInterval: string | number | NodeJS.Timeout | undefined;
+    const timerDuration = this.timerDuration; 
 
     Swal.fire({
       background:
         '#fff url(https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22) center center/contain no-repeat',
       html: "<div style='position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center;'>I will close in <b></b> milliseconds.</div>",
       padding: '4rem',
-      timer: 2500,
+      timer: timerDuration,
       timerProgressBar: true,
       showConfirmButton: false,
+      allowOutsideClick: false,
       didOpen: () => {
         const popup = Swal.getPopup();
         if (popup) {
@@ -100,23 +108,57 @@ export class VoteComponent implements OnInit {
           clearInterval(timerInterval);
         }
       },
+      
     }).then(async (result) => {
       if (result.dismiss === Swal.DismissReason.timer) {
         console.log('I was closed by the timer');
       }
-      Swal.fire({
-        title: `You vote on the ${votedSide}`,
-        text: `Post ID Winer: ${winnerPostId}`,
+      // Swal.fire({
+      //   title: `You vote on the ${votedSide}`,
+      //   text: `Post ID Winer: ${winnerPostId}`,
         
-        icon: 'success',
-      }).then(() => {
-        // จากนั้นทำการรีโหลดหน้าเว็บ
-        window.location.reload();
-      });
+      //   icon: 'success',
+      // }).then(() => {
+      //   // จากนั้นทำการรีโหลดหน้าเว็บ
+      //   window.location.reload();
+      // });
+      // window.addEventListener('load', () => {
+      //   Swal.close();
+      // });
 
       try {
         const response = await axios.post(URL, { winnerPostId, loserPostId });
         console.log('Response data:', response.data);
+        console.log('Message:', response.data.message);
+        console.log('Updated winner:', response.data.updatedWinner);
+        console.log('Updated loser:', response.data.updatedLoser);
+        console.log('After update log:', response.data.afterUpdateLog);
+        
+        // หากต้องการใช้ข้อมูลในแอพพลิเคชันหรือเว็บไซต์
+        const message = response.data.message;
+        const updatedWinner = response.data.updatedWinner;
+        const updatedLoser = response.data.updatedLoser;
+        const afterUpdateLog = response.data.afterUpdateLog;
+        
+        // ตัวอย่างการเข้าถึงข้อมูล
+        console.log('Message:', message);
+        console.log('Winner Post ID:', updatedWinner.postId);
+        console.log('New Rating of Winner:', updatedWinner.newRating);
+        console.log('Old Rating of Winner:', updatedWinner.oldRating);
+        console.log('Loser Post ID:', updatedLoser.postId);
+        console.log('New Rating of Loser:', updatedLoser.newRating);
+        console.log('Old Rating of Loser:', updatedLoser.oldRating);
+        console.log('After update log:', afterUpdateLog);
+
+      Swal.fire({
+        title: `You vote Post  ${response.data.updatedWinner.postId} on the ${votedSide}`,
+        text: `Old Score Winner: ${response.data.updatedWinner.oldRating}
+                    New Score Winner: ${response.data.updatedWinner.newRating}`,
+        icon: 'success',
+      }).then(() => {
+        // หลังจากที่ผู้ใช้กด OK ใน Swal ให้ทำการรีโหลดหน้าเว็บ
+        window.location.reload();
+      });
 
         // const {
         //   updatedWinner,
@@ -165,15 +207,13 @@ export class VoteComponent implements OnInit {
   }
 
   async profile(userId: number) {
-    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const HOST: string = 'http://localhost:3000';
     const url = `${HOST}/facemash/profile`;
 
-    // Load user profile data
     try {
       const response = await axios.get(url, { params: { userId } });
       const userProfile = response.data;
 
-      // Use the loaded profile data as needed
     } catch (error) {
       console.error('Error fetching profile:', error);
     }
