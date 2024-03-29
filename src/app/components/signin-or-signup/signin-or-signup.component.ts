@@ -32,7 +32,7 @@ export class SigninOrSignupComponent {
   constructor(private router: Router, private httpClient: HttpClient, private dialog: MatDialog) {}
 
   getSignUp(firstNameInput: HTMLInputElement, lastNameInput: HTMLInputElement, emailInput: HTMLInputElement, passwordInput: HTMLInputElement) {
-    const url = 'https://project-backend-2-2.onrender.com/facemash/signup/';
+    const url = 'http://localhost:3000/facemash/signup/';
     
     // Check if any of the input fields are empty
     if (!firstNameInput.value || !lastNameInput.value || !emailInput.value || !passwordInput.value) {
@@ -107,7 +107,7 @@ isValidEmail(email: string): boolean {
   
 
   async getSignIn(email: string, password: string) {
-    const HOST: string = "https://project-backend-2-2.onrender.com";
+    const HOST: string = "http://localhost:3000";
     const url = `${HOST}/facemash/signin/`;
 
     const data = {

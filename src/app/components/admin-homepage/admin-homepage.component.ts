@@ -58,7 +58,7 @@ export class AdminHomepageComponent implements OnInit{
   }
 
   fetchUserData(user_id: string) {
-    const url = `https://project-backend-2-2.onrender.com/facemash/homepage`;
+    const url = `http://localhost:3000/facemash/homepage`;
 
     this.httpClient.post(url, { user_id }).subscribe(
       (response: any) => {

@@ -88,7 +88,7 @@ email: any;
       }).then((result) => {
         if (result.isConfirmed) {
       
-      const updateUrl = `https://project-backend-2-2.onrender.com/facemash/reset-password`;
+      const updateUrl = `http://localhost:3000/facemash/reset-password`;
       const requestBody = { email: email, password: password }; 
       
       this.httpClient.put(updateUrl, requestBody).subscribe(
