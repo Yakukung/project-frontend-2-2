@@ -24,7 +24,7 @@ export class VoteComponent implements OnInit {
   user_id: any;
   checkSignin: any = '';
   colorControl: any;
-  timerDuration = 1000; 
+  timerDuration = 4000; 
 
   constructor(private router: Router, private route: ActivatedRoute) {}
 
