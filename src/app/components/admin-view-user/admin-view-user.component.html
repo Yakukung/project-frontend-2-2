@@ -1,5 +1,16 @@
 <app-navbar></app-navbar>
 <div class="container">
+  <hr>
+  <mat-form-field class="setting-select">
+    <mat-label>Set delay time</mat-label>
+    <mat-select [(ngModel)]="timerDuration" (ngModelChange)="onTimerDurationChange($event)">
+      <mat-option value="3000">3s</mat-option>
+      <mat-option value="5000">5s</mat-option>
+      <mat-option value="10000">10s</mat-option>
+      <mat-option value="20000">20s</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
   <div class="card-user" *ngFor="let item of response">
     <div class="card-head">
       <img *ngIf="item.icon" [src]="item.icon" alt="">

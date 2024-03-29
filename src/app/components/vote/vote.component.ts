@@ -9,6 +9,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-vote',
@@ -24,11 +25,28 @@ export class VoteComponent implements OnInit {
   user_id: any;
   checkSignin: any = '';
   colorControl: any;
-  timerDuration = 3000; 
+  response: any;
+  time_delay: any;
+  timerDuration: string = '';
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
 
   async ngOnInit() {
+ 
+    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const url = `${HOST}/facemash/vote/get-timer-duration`;
+  
+    try {
+      const response = await this.httpClient.get(url).toPromise();
+      console.log('Response from server:', response);
+      this.response = response;
+      this.timerDuration = (response as any).timerDuration; // Update timerDuration directly
+      console.log("timerDuration:", this.timerDuration);
+      
+    } catch (error) {
+      console.error('Error fetching timerDuration:', error);
+    }
+
     let timerInterval: string | number | NodeJS.Timeout | undefined;
     Swal.fire({
       background:
@@ -60,7 +78,7 @@ export class VoteComponent implements OnInit {
     });
 
     try {
-      const HOST: string = 'http://localhost:3000';
+      const HOST: string = 'https://project-backend-2-2.onrender.com';
       const url = `${HOST}/facemash/vote`;
 
       const response = await axios.get(url);
@@ -76,17 +94,18 @@ export class VoteComponent implements OnInit {
     }
   }
 
+  
+
   async vote(winnerPostId: number, loserPostId: number, votedSide: string) {
-    const URL = 'http://localhost:3000/facemash/vote';
+    const URL = 'https://project-backend-2-2.onrender.com/facemash/vote';
     let timerInterval: string | number | NodeJS.Timeout | undefined;
-    const timerDuration = this.timerDuration; 
 
     Swal.fire({
       background:
         '#fff url(https://firebasestorage.googleapis.com/v0/b/project-web-2-2.appspot.com/o/assets%2Fimg%2Fgif%2Fkurukuru-kururing.gif?alt=media&token=a4623ed0-82b6-4dba-92ca-9004f646fe22) center center/contain no-repeat',
       html: "<div style='position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 100%; text-align: center;'>I will close in <b></b> milliseconds.</div>",
       padding: '4rem',
-      timer: timerDuration,
+      timer: parseInt(this.timerDuration), // or parseFloat(this.timerDuration)
       timerProgressBar: true,
       showConfirmButton: false,
       allowOutsideClick: false,
@@ -207,7 +226,7 @@ export class VoteComponent implements OnInit {
   }
 
   async profile(userId: number) {
-    const HOST: string = 'http://localhost:3000';
+    const HOST: string = 'https://project-backend-2-2.onrender.com';
     const url = `${HOST}/facemash/profile`;
 
     try {

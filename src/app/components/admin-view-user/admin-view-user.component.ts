@@ -9,6 +9,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatChipListbox } from '@angular/material/chips';
 import Swal from 'sweetalert2';
+import {MatSelectChange, MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import axios from 'axios';
+import { log } from 'console';
 
 interface UserData {
 user_id: any;
@@ -21,16 +27,20 @@ last_name: any;
 @Component({
   selector: 'app-admin-view-user',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox,],
+  imports: [CommonModule, NavbarComponent, MatButtonModule, HttpClientModule, MatChipsModule, MatChipListbox,MatFormFieldModule,MatInputModule, MatSelectModule, FormsModule],
   templateUrl: './admin-view-user.component.html',
   styleUrl: './admin-view-user.component.scss'
 })
 export class AdminViewUserComponent implements OnInit {
+onTimerDurationChange($event: MatSelectChange) {
+throw new Error('Method not implemented.');
+}
   response: UserData[] = [];
   user_id: any;
   user_type: any;
   userId: any;
   admin_id: any;
+  timerDuration = 3000; 
 
   constructor(private router: Router, private route: ActivatedRoute, private httpClient: HttpClient) {}
 
@@ -70,7 +80,7 @@ export class AdminViewUserComponent implements OnInit {
         },
       });
 
-      const HOST: string = 'http://localhost:3000';
+      const HOST: string = 'https://project-backend-2-2.onrender.com';
       const url = `${HOST}/facemash/admin/`;
 
       const response = await this.httpClient.get<UserData[]>(url).toPromise() ?? [];
@@ -84,5 +94,18 @@ export class AdminViewUserComponent implements OnInit {
   viewProfile(admin_id: string,  user_type: any, view_user_id: any) {
     this.router.navigate(['/show-user-profile'], { queryParams: { admin_id: admin_id, user_type: user_type, view_user_id: view_user_id}});
 
+  }
+
+  async setTimeDelay(timerDuration: string){
+    const HOST: string = 'https://project-backend-2-2.onrender.com';
+    const url = `${HOST}/facemash/vote/time-delay`;
+
+    try {
+      const response = await axios.get(url, { params: { timerDuration } });
+      console.log(response);
+
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
   }
 }
